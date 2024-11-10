@@ -10,3 +10,9 @@ export type ProductPreviewItemProps = {
   isEven: boolean;
   badge?: string;
 };
+
+export type AccordionItemProps = {
+  id: number;
+  trigger: string;
+  content: string;
+};

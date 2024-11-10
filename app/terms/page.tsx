@@ -10,7 +10,7 @@ export default function Terms(): React.JSX.Element {
       <Header />
 
       <main className="flex flex-col items-center px-8 pb-8">
-        <h2 className="uppercase text-4xl">Terms and Conditions</h2>
+        <h2 className="uppercase text-4xl text-center">Terms and Conditions</h2>
 
         <p className="mt-4 max-w-4xl uppercase text-sm">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia

@@ -44,11 +44,12 @@ const Menu: React.FC = (): React.JSX.Element => {
             className="hover:opacity-85"
           >
             <FadeText
+              className="uppercase"
               direction="up"
               framerProps={{
                 show: { transition: { delay: 0.15 } },
               }}
-              text="PRIVACY POLICY"
+              text="Privacy Policy"
             />
           </Link>
 
@@ -58,11 +59,12 @@ const Menu: React.FC = (): React.JSX.Element => {
             className="hover:opacity-85"
           >
             <FadeText
+              className="uppercase"
               direction="up"
               framerProps={{
                 show: { transition: { delay: 0.2 } },
               }}
-              text="TERMS AND CONDITIONS"
+              text="Terms and Conditions"
             />
           </Link>
 
@@ -72,11 +74,12 @@ const Menu: React.FC = (): React.JSX.Element => {
             className="hover:opacity-85"
           >
             <FadeText
+              className="uppercase"
               direction="up"
               framerProps={{
                 show: { transition: { delay: 0.25 } },
               }}
-              text="CONTACT US"
+              text="Contact us"
             />
           </Link>
         </nav>
