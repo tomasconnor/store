@@ -13,7 +13,7 @@ const ProductPreviewItem: React.FC<ProductPreviewItemProps> = ({
   return (
     <Link href={`/${product.slug}`}>
       <div
-        className={`flex items-center justify-center h-[500px] uppercase text-2xl ${
+        className={`flex items-center justify-center h-[500px] uppercase text-4xl ${
           isEven && "bg-[#0E0E0E]"
         }`}
       >
