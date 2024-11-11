@@ -12,26 +12,34 @@ export default function Bundle(): React.JSX.Element {
       specification={
         <div className="flex gap-8">
           <div className="flex flex-col items-start">
-            <h2 className="uppercase text-2xl">Bundle:</h2>
+            <h2 className="uppercase text-2xl">Bundle</h2>
             <Badge className="dark:hover:bg-white uppercase mt-1">
               Save 10%
             </Badge>
           </div>
 
-          <div className="flex flex-col">
-            <h3 className="uppercase">1x Bracelet</h3>
-            <ul className="text-[#808080] uppercase text-xs">
-              <li>100% silicon</li>
-              <li>200X12MM</li>
-            </ul>
+          <div className="flex items-center">
+            <span className="mr-4">1X</span>
+
+            <div className="flex flex-col">
+              <h3 className="uppercase">Bracelet</h3>
+              <ul className="text-[#808080] uppercase text-xs">
+                <li>100% silicon</li>
+                <li>200X12MM</li>
+              </ul>
+            </div>
           </div>
 
-          <div className="flex flex-col">
-            <h3 className="uppercase">1x Patch</h3>
-            <ul className="text-[#808080] uppercase text-xs">
-              <li>PVC + velcro</li>
-              <li>130X40MM</li>
-            </ul>
+          <div className="flex items-center">
+            <span className="mr-4">1X</span>
+
+            <div className="flex flex-col">
+              <h3 className="uppercase">Patch</h3>
+              <ul className="text-[#808080] uppercase text-xs">
+                <li>PVC + velcro</li>
+                <li>130X40MM</li>
+              </ul>
+            </div>
           </div>
         </div>
       }
