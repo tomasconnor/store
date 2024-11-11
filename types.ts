@@ -15,3 +15,9 @@ export type AccordionItemProps = {
   trigger: string;
   content: string;
 };
+
+export type ProductDetailProps = {
+  id: string;
+  specification: React.JSX.Element;
+  price: number;
+};
