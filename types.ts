@@ -8,7 +8,6 @@ export type Product = {
 export type ProductPreviewItemProps = {
   product: Product;
   isEven: boolean;
-  badge?: string;
 };
 
 export type AccordionItemProps = {
