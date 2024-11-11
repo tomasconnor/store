@@ -18,7 +18,7 @@ const Header: React.FC = (): React.JSX.Element => {
 
       <nav className="flex items-center gap-x-2">
         <Button variant="ghost" className="[&_svg]:size-5 h-12 relative">
-          <Badge className="absolute -top-1 -right-1 w-6 h-6 flex items-center justify-center">
+          <Badge className="absolute -top-1 -right-1 w-6 h-6 flex items-center justify-center dark:hover:bg-white">
             0
           </Badge>
           <ShoppingCart />

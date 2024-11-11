@@ -14,6 +14,7 @@ import {
 
 import { AccordionItemProps } from "@/types";
 
+// @TODO
 const accordions: AccordionItemProps[] = [
   {
     id: 1,
@@ -88,21 +89,18 @@ export default function Contact(): React.JSX.Element {
 
         <div className="flex flex-wrap gap-8 mt-8 w-full">
           <Card className="text-center p-8 flex-1">
-            <h2 className="text-2xl uppercase">Orders</h2>
             <a className="uppercase" href="mailto:orders@tactical.fitness">
               orders@tactical.fitness
             </a>
           </Card>
 
           <Card className="text-center p-8 flex-1">
-            <h2 className="text-2xl uppercase">Returns</h2>
             <a className="uppercase" href="mailto:returns@tactical.fitness">
               returns@tactical.fitness
             </a>
           </Card>
 
           <Card className="text-center p-8 flex-1">
-            <h2 className="text-2xl uppercase">Support</h2>
             <a className="uppercase" href="mailto:support@tactical.fitness">
               support@tactical.fitness
             </a>
