@@ -110,7 +110,7 @@ export default function Contact(): React.JSX.Element {
         <div className="w-full flex flex-col items-center mt-12">
           <h3 className="uppercase text-2xl">Frequently asked questions</h3>
 
-          <Accordion type="single" className="w-full mt-2">
+          <Accordion type="multiple" className="w-full mt-2">
             {accordions.map((accordion: AccordionItemProps) => (
               <AccordionItem
                 key={accordion.id}
