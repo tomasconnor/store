@@ -24,20 +24,20 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
         {specification}
 
         <div className="flex items-center gap-6">
-          <Button variant="outline" className="h-14 w-14">
+          <Button variant="outline" className="h-12 w-12">
             <Minus />
           </Button>
 
           <span>1</span>
 
-          <Button variant="outline" className="h-14 w-14">
+          <Button variant="outline" className="h-12 w-12">
             <Plus />
           </Button>
         </div>
 
         <span>${price}</span>
 
-        <Button variant="outline" className="uppercase h-14">
+        <Button variant="outline" className="uppercase h-12">
           Add to cart
         </Button>
       </div>

@@ -5,6 +5,8 @@ import type { Metadata } from "next";
 import { Libre_Franklin } from "next/font/google";
 const libreFranklin = Libre_Franklin({ subsets: ["latin"], weight: "600" });
 
+import Snowfall from "@/components/Snowfall";
+
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -19,7 +21,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${libreFranklin.className} dark`}>{children}</body>
+      <body className={`${libreFranklin.className} dark`}>
+        {children}
+
+        <Snowfall
+          color="white"
+          snowflakeCount={50}
+          speed={[0, 0.5]}
+          radius={[0, 0.5]}
+          wind={[0, 1]}
+        />
+      </body>
     </html>
   );
 }
