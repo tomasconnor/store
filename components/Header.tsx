@@ -2,6 +2,7 @@ import React from "react";
 
 import Link from "next/link";
 
+import LanguageSwitcher from "./LanguageSwitcher";
 import Menu from "@/components/Menu";
 
 import { Button } from "@/components/ui/button";
@@ -17,9 +18,7 @@ const Header: React.FC = (): React.JSX.Element => {
       </h1>
 
       <nav className="flex items-center gap-x-2">
-        <Button variant="ghost" className="h-12 uppercase">
-          English
-        </Button>
+        <LanguageSwitcher />
 
         <Button variant="ghost" className="[&_svg]:size-5 h-12 relative">
           <Badge className="absolute -top-1 -right-1 w-6 h-6 flex items-center justify-center dark:hover:bg-white">
