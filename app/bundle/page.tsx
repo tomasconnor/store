@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/badge";
 export default function Bundle(): React.JSX.Element {
   return (
     <ProductDetail
-      id="bracelet"
       price={4.99}
       specification={
         <div className="flex gap-8">

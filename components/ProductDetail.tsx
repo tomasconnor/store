@@ -9,7 +9,6 @@ import { Minus, Plus } from "lucide-react";
 import { ProductDetailProps } from "@/types";
 
 const ProductDetail: React.FC<ProductDetailProps> = ({
-  id, // @TODO: UPGRADE TO BUNDLE
   specification,
   price,
 }): React.JSX.Element => {
