@@ -18,6 +18,14 @@ import { FadeText } from "@/components/ui/fade-text";
 
 import { Text, X } from "lucide-react";
 
+import { NavItem } from "@/types";
+
+const navItems: NavItem[] = [
+  { text: "Privacy Policy", slug: "/privacy" },
+  { text: "Terms and Conditions", slug: "/terms" },
+  { text: "Contact Us", slug: "/contact" },
+];
+
 const Menu: React.FC = (): React.JSX.Element => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -38,50 +46,28 @@ const Menu: React.FC = (): React.JSX.Element => {
           </AlertDialogCancel>
         </header>
         <nav className="flex flex-col text-center text-2xl gap-4">
-          <Link
-            href="/privacy"
-            onClick={() => setOpen(false)}
-            className="hover:opacity-85"
-          >
-            <FadeText
-              className="uppercase"
-              direction="up"
-              framerProps={{
-                show: { transition: { delay: 0.15 } },
-              }}
-              text="Privacy Policy"
-            />
-          </Link>
+          {navItems.map((item: NavItem, index: number) => {
+            const nextSmoothTransitionValue: number = index * 0.05;
+            const transitionDelay: number = 0.15 + nextSmoothTransitionValue;
 
-          <Link
-            href="/terms"
-            onClick={() => setOpen(false)}
-            className="hover:opacity-85"
-          >
-            <FadeText
-              className="uppercase"
-              direction="up"
-              framerProps={{
-                show: { transition: { delay: 0.2 } },
-              }}
-              text="Terms and Conditions"
-            />
-          </Link>
-
-          <Link
-            href="/contact"
-            onClick={() => setOpen(false)}
-            className="hover:opacity-85"
-          >
-            <FadeText
-              className="uppercase"
-              direction="up"
-              framerProps={{
-                show: { transition: { delay: 0.25 } },
-              }}
-              text="Contact us"
-            />
-          </Link>
+            return (
+              <Link
+                key={item.text}
+                href={item.slug}
+                onClick={() => setOpen(false)}
+                className="hover:opacity-85"
+              >
+                <FadeText
+                  className="uppercase"
+                  direction="up"
+                  framerProps={{
+                    show: { transition: { delay: transitionDelay } },
+                  }}
+                  text={item.text}
+                />
+              </Link>
+            );
+          })}
         </nav>
         <footer />
       </AlertDialogContent>

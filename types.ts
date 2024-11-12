@@ -21,3 +21,13 @@ export type ProductDetailProps = {
   specification: React.JSX.Element;
   price: number;
 };
+
+export type NavItem = {
+  text: string;
+  slug: string;
+};
+
+export type LanguageItem = {
+  text: string;
+  slug: string;
+};

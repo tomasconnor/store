@@ -18,6 +18,14 @@ import { FadeText } from "@/components/ui/fade-text";
 
 import { X } from "lucide-react";
 
+import { LanguageItem } from "@/types";
+
+const languages: LanguageItem[] = [
+  { text: "Čeština", slug: "/" },
+  { text: "Slovenčina", slug: "/" },
+  { text: "English", slug: "/" },
+];
+
 const LanguageSwitcher: React.FC = (): React.JSX.Element => {
   const [open, setOpen] = useState<boolean>(false);
 
@@ -47,50 +55,28 @@ const LanguageSwitcher: React.FC = (): React.JSX.Element => {
           </AlertDialogCancel>
         </header>
         <nav className="flex flex-col text-center text-2xl gap-4">
-          <Link
-            href="/"
-            onClick={() => handleCurrentLanguage("Čeština")}
-            className="hover:opacity-85"
-          >
-            <FadeText
-              className="uppercase"
-              direction="up"
-              framerProps={{
-                show: { transition: { delay: 0.15 } },
-              }}
-              text="Čeština"
-            />
-          </Link>
+          {languages.map((item: LanguageItem, index: number) => {
+            const nextSmoothTransitionValue: number = index * 0.05;
+            const transitionDelay: number = 0.15 + nextSmoothTransitionValue;
 
-          <Link
-            href="/"
-            onClick={() => handleCurrentLanguage("Slovenčina")}
-            className="hover:opacity-85"
-          >
-            <FadeText
-              className="uppercase"
-              direction="up"
-              framerProps={{
-                show: { transition: { delay: 0.2 } },
-              }}
-              text="Slovenčina"
-            />
-          </Link>
-
-          <Link
-            href="/"
-            onClick={() => handleCurrentLanguage("English")}
-            className="hover:opacity-85"
-          >
-            <FadeText
-              className="uppercase"
-              direction="up"
-              framerProps={{
-                show: { transition: { delay: 0.25 } },
-              }}
-              text="English"
-            />
-          </Link>
+            return (
+              <Link
+                key={item.text}
+                href={item.slug}
+                onClick={() => handleCurrentLanguage(item.text)}
+                className="hover:opacity-85"
+              >
+                <FadeText
+                  className="uppercase"
+                  direction="up"
+                  framerProps={{
+                    show: { transition: { delay: transitionDelay } },
+                  }}
+                  text={item.text}
+                />
+              </Link>
+            );
+          })}
         </nav>
         <footer />
       </AlertDialogContent>
