@@ -8,7 +8,7 @@ export default function Bracelet(): React.JSX.Element {
       inStock
       price={4.99}
       specification={
-        <div className="flex flex-col">
+        <div>
           <h2 className="uppercase">Bracelet</h2>
           <ul className="text-[#808080] uppercase text-xs">
             <li>100% silicon</li>

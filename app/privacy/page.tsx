@@ -9,10 +9,10 @@ export default function Privacy(): React.JSX.Element {
       <TopBar />
       <Header />
 
-      <main className="flex flex-col items-center px-8 pb-8">
+      <main className="px-6 pb-10 max-w-5xl m-auto">
         <h2 className="uppercase text-4xl text-center">Privacy Policy</h2>
 
-        <p className="mt-4 max-w-4xl uppercase text-sm">
+        <p className="mt-4 uppercase text-sm">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia
           sapien nibh, nec consequat elit commodo sit amet. Quisque viverra
           placerat risus eget consectetur. Nam ac justo semper, tincidunt est

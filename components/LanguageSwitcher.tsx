@@ -40,7 +40,7 @@ const LanguageSwitcher: React.FC = (): React.JSX.Element => {
 
   return (
     <AlertDialog open={open} onOpenChange={setOpen}>
-      <AlertDialogTrigger className="dark:focus-visible:outline-none" asChild>
+      <AlertDialogTrigger asChild>
         <Button variant="ghost" className="h-12 uppercase">
           {currentLanguage}
         </Button>
@@ -54,7 +54,7 @@ const LanguageSwitcher: React.FC = (): React.JSX.Element => {
             <X />
           </AlertDialogCancel>
         </header>
-        <nav className="flex flex-col text-center text-2xl gap-4">
+        <nav className="flex flex-col gap-4">
           {languages.map((item: LanguageItem, index: number) => {
             const nextSmoothTransitionValue: number = index * 0.05;
             const transitionDelay: number = 0.15 + nextSmoothTransitionValue;
@@ -64,10 +64,9 @@ const LanguageSwitcher: React.FC = (): React.JSX.Element => {
                 key={item.text}
                 href={item.slug}
                 onClick={() => handleCurrentLanguage(item.text)}
-                className="hover:opacity-85"
+                className="hover:opacity-85 text-center text-2xl uppercase"
               >
                 <FadeText
-                  className="uppercase"
                   direction="up"
                   framerProps={{
                     show: { transition: { delay: transitionDelay } },

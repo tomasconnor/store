@@ -13,18 +13,16 @@ const ProductPreviewItem: React.FC<ProductPreviewItemProps> = ({
   return (
     <Link href={`/${product.slug}`}>
       <div
-        className={`flex items-center justify-center h-[500px] uppercase text-4xl ${
+        className={`flex items-center justify-center h-[500px] ${
           isEven && "bg-[#0E0E0E]"
         }`}
       >
-        <span className="flex items-start">
+        <h2 className="flex items-start uppercase text-4xl">
           {product.name}
           {product.badge && (
-            <Badge className="ml-2 dark:hover:bg-white uppercase">
-              {product.badge}
-            </Badge>
+            <Badge className="ml-2 dark:hover:bg-white">{product.badge}</Badge>
           )}
-        </span>
+        </h2>
       </div>
     </Link>
   );

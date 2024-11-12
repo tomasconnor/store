@@ -13,23 +13,23 @@ export default function Contact(): React.JSX.Element {
       <TopBar />
       <Header />
 
-      <main className="flex flex-col items-center w-full px-8 pb-8 max-w-6xl m-auto">
-        <h2 className="uppercase text-4xl">Contact us</h2>
+      <main className="px-6 pb-10 max-w-5xl m-auto">
+        <h2 className="uppercase text-4xl text-center">Contact us</h2>
 
-        <div className="flex flex-wrap gap-8 mt-8 w-full">
-          <Card className="text-center p-8 flex-1">
+        <div className="flex flex-wrap gap-8 mt-8">
+          <Card className="text-center p-6 flex-1">
             <a className="uppercase" href="mailto:orders@tactical.fitness">
               orders@tactical.fitness
             </a>
           </Card>
 
-          <Card className="text-center p-8 flex-1">
+          <Card className="text-center p-6 flex-1">
             <a className="uppercase" href="mailto:returns@tactical.fitness">
               returns@tactical.fitness
             </a>
           </Card>
 
-          <Card className="text-center p-8 flex-1">
+          <Card className="text-center p-6 flex-1">
             <a className="uppercase" href="mailto:support@tactical.fitness">
               support@tactical.fitness
             </a>

@@ -75,7 +75,7 @@ const ContactFAQ: React.FC = (): React.JSX.Element => {
             value={accordion.trigger}
             className="border-[#262626]"
           >
-            <AccordionTrigger className="uppercase">
+            <AccordionTrigger className="uppercase text-left hover:no-underline">
               {accordion.trigger}
             </AccordionTrigger>
             <AccordionContent className="uppercase">
