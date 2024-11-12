@@ -5,6 +5,7 @@ import ProductDetail from "@/components/ProductDetail";
 export default function Bracelet(): React.JSX.Element {
   return (
     <ProductDetail
+      inStock
       price={4.99}
       specification={
         <div className="flex flex-col">

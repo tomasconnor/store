@@ -17,6 +17,7 @@ export type AccordionItemProps = {
 export type ProductDetailProps = {
   specification: React.JSX.Element;
   price: number;
+  inStock: boolean;
 };
 
 export type NavItem = {

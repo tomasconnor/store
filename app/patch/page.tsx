@@ -5,6 +5,7 @@ import ProductDetail from "@/components/ProductDetail";
 export default function Patch(): React.JSX.Element {
   return (
     <ProductDetail
+      inStock
       price={9.99}
       specification={
         <div className="flex flex-col">

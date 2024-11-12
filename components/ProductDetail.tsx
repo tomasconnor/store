@@ -11,6 +11,7 @@ import { ProductDetailProps } from "@/types";
 const ProductDetail: React.FC<ProductDetailProps> = ({
   specification,
   price,
+  inStock,
 }): React.JSX.Element => {
   return (
     <div className="flex flex-col justify-between min-h-screen">
@@ -20,8 +21,13 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
       </div>
 
       <div className="flex justify-center items-center gap-10 pb-12">
-        {specification}
+        <span
+          className={`w-2 h-2 rounded-full ${
+            inStock ? "bg-[#00ff00]" : "bg-[#ff0000]"
+          }`}
+        />
 
+        {specification}
         <div className="flex items-center gap-6">
           <Button variant="outline" className="h-12 w-12">
             <Minus />
@@ -33,9 +39,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
             <Plus />
           </Button>
         </div>
-
         <span>${price}</span>
-
         <Button variant="outline" className="uppercase h-12">
           Add to cart
         </Button>
