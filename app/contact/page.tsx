@@ -18,19 +18,28 @@ export default function Contact(): React.JSX.Element {
 
         <div className="flex flex-wrap gap-8 mt-8">
           <Card className="text-center p-6 flex-1">
-            <a className="uppercase" href="mailto:orders@tactical.fitness">
+            <a
+              className="uppercase hover:opacity-85"
+              href="mailto:orders@tactical.fitness"
+            >
               orders@tactical.fitness
             </a>
           </Card>
 
           <Card className="text-center p-6 flex-1">
-            <a className="uppercase" href="mailto:returns@tactical.fitness">
+            <a
+              className="uppercase hover:opacity-85"
+              href="mailto:returns@tactical.fitness"
+            >
               returns@tactical.fitness
             </a>
           </Card>
 
           <Card className="text-center p-6 flex-1">
-            <a className="uppercase" href="mailto:support@tactical.fitness">
+            <a
+              className="uppercase hover:opacity-85"
+              href="mailto:support@tactical.fitness"
+            >
               support@tactical.fitness
             </a>
           </Card>
