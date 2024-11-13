@@ -78,7 +78,7 @@ const ContactFAQ: React.FC = (): React.JSX.Element => {
             <AccordionTrigger className="uppercase text-left hover:no-underline hover:opacity-85">
               {accordion.trigger}
             </AccordionTrigger>
-            <AccordionContent className="uppercase">
+            <AccordionContent className="uppercase text-[#808080]">
               {accordion.content}
             </AccordionContent>
           </AccordionItem>

@@ -12,7 +12,7 @@ export default function Bundle(): React.JSX.Element {
       specification={
         <div className="flex gap-8">
           <div>
-            <h2 className="uppercase text-2xl">Bundle</h2>
+            <h2 className="uppercase text-3xl">Bundle</h2>
             <Badge className="dark:hover:bg-white uppercase mt-1">
               Save 10%
             </Badge>
