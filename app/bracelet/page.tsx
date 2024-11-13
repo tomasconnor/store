@@ -8,8 +8,8 @@ export default function Bracelet(): React.JSX.Element {
       inStock
       price={4.99}
       specification={
-        <div>
-          <h2 className="uppercase">Bracelet</h2>
+        <div className="flex items-center gap-8">
+          <h2 className="uppercase text-2xl">Bracelet</h2>
           <ul className="text-[#808080] uppercase text-xs">
             <li>100% silicon</li>
             <li>200X12MM</li>
