@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
 import { Minus, Plus } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
 
 import Link from "next/link";
 
@@ -14,12 +15,31 @@ const CartWithItems: React.FC = (): React.JSX.Element => {
 
       <div className="flex items-center flex-col w-full max-w-4xl gap-8">
         <Card className="flex justify-between items-center gap-10 px-10 py-6 w-full">
-          <Link
-            href="/bracelet"
-            className="uppercase text-2xl hover:opacity-85"
-          >
-            Bracelet
-          </Link>
+          <div className="flex flex-col">
+            <Link
+              href="/bracelet"
+              className="uppercase text-2xl hover:opacity-85"
+            >
+              Bracelet
+            </Link>
+
+            {/* @TODO */}
+            <span className="flex items-center gap-2">
+              <Button
+                variant="link"
+                className="p-0 uppercase underline hover:opacity-85"
+                asChild
+              >
+                <Link href="/bundle">Upgrade to bundle</Link>
+              </Button>
+
+              <Badge className="dark:hover:bg-white uppercase">Save 10%</Badge>
+
+              <Badge className="dark:hover:bg-white uppercase">
+                Extra gift
+              </Badge>
+            </span>
+          </div>
 
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-8">
@@ -39,7 +59,7 @@ const CartWithItems: React.FC = (): React.JSX.Element => {
         </Card>
 
         <div className="flex justify-between w-full px-10">
-          <span className="uppercase">1 item</span>
+          <span className="uppercase">Just $5 for free shipping!</span>
           <span className="uppercase">Total $9.99</span>
         </div>
       </div>

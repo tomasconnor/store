@@ -17,10 +17,15 @@ const ProductPreviewItem: React.FC<ProductPreviewItemProps> = ({
           isEven && "bg-[#0E0E0E]"
         }`}
       >
-        <h2 className="flex items-start uppercase text-4xl">
+        <h2 className="flex flex-col items-center uppercase text-4xl gap-2">
           {product.name}
-          {product.badge && (
-            <Badge className="ml-2 dark:hover:bg-white">{product.badge}</Badge>
+
+          {product.badges && (
+            <div className="flex gap-2">
+              {product.badges.map((badge) => (
+                <Badge className="dark:hover:bg-white">{badge}</Badge>
+              ))}
+            </div>
           )}
         </h2>
       </div>

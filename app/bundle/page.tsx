@@ -10,12 +10,17 @@ export default function Bundle(): React.JSX.Element {
     <ProductDetail
       price={4.99}
       specification={
-        <div className="flex gap-6">
+        <div className="flex gap-8">
           <div>
             <h2 className="uppercase text-2xl">Bundle</h2>
-            <Badge className="dark:hover:bg-white uppercase mt-1">
-              Save 10%
-            </Badge>
+
+            <div className="flex gap-2 mt-1">
+              <Badge className="dark:hover:bg-white uppercase">Save 10%</Badge>
+
+              <Badge className="dark:hover:bg-white uppercase">
+                Extra gift
+              </Badge>
+            </div>
           </div>
 
           <div className="flex items-center">

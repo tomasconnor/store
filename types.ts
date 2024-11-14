@@ -1,7 +1,7 @@
 export type Product = {
   name: string;
   slug: string;
-  badge?: string;
+  badges?: string[];
 };
 
 export type ProductPreviewItemProps = {

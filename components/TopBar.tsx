@@ -5,8 +5,8 @@ const TopBar: React.FC = (): React.JSX.Element => {
   return (
     <div className="flex items-center justify-center bg-white p-2">
       <p className="text-sm uppercase text-center text-black">
-        Free Shipping on Orders Over $20 Plus a Gift in Every{" "}
-        <Link className="underline hover:no-underline" href="/bundle">
+        Free Shipping on Orders Over $20 Plus a Extra Gift in Every{" "}
+        <Link className="underline hover:opacity-85" href="/bundle">
           Bundle
         </Link>
         !

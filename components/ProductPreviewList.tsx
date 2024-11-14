@@ -11,7 +11,7 @@ const ProductPreviewList: React.FC = (): React.JSX.Element => {
     {
       name: "Bundle",
       slug: "bundle",
-      badge: "Save 10%",
+      badges: ["Save 10%", "Extra gift"],
     },
   ];
 

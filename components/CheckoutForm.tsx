@@ -25,11 +25,11 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
   setOrderCompleted,
 }): React.JSX.Element => {
   return (
-    <div className="flex items-center flex-col px-6 gap-6 pb-10">
+    <div className="flex items-center flex-col px-6 gap-8 pb-10">
       <h2 className="uppercase text-4xl text-center">Checkout</h2>
       <div className="flex gap-10 w-full max-w-5xl">
         {/* Left */}
-        <div className="flex flex-col gap-6 max-[409px] w-full">
+        <div className="flex flex-col gap-8 max-[409px] w-full">
           {/* Contact details */}
           <div>
             <h3 className="uppercase mb-4">Contact details</h3>
