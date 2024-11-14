@@ -51,7 +51,7 @@ const CartWithItems: React.FC = (): React.JSX.Element => {
 
       <div className="flex gap-4">
         <Button variant="outline" className="uppercase" asChild>
-          <Link href="/">Proceed to checkout</Link>
+          <Link href="/checkout">Proceed to checkout</Link>
         </Button>
 
         <Button variant="ghost" className="uppercase" asChild>

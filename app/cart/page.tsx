@@ -2,7 +2,7 @@ import React from "react";
 
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
-// import CartIsEmpty from "@/components/CartIsEmpty";
+import CartIsEmpty from "@/components/CartIsEmpty";
 import CartWithItems from "@/components/CartWithItems";
 
 export default function Cart(): React.JSX.Element {
@@ -14,7 +14,6 @@ export default function Cart(): React.JSX.Element {
       </div>
 
       <CartWithItems />
-      {/* <CartIsEmpty /> */}
 
       <footer />
     </div>

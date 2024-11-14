@@ -21,7 +21,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
         <Header />
       </div>
 
-      <div className="flex justify-center items-center gap-10 pb-12">
+      <div className="flex justify-center items-center gap-10 pb-10">
         <span
           className={`w-2 h-2 rounded-full ${
             inStock ? "bg-[#00ff00]" : "bg-[#ff0000]"
