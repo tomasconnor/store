@@ -2,7 +2,8 @@ import React from "react";
 
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
-import CartIsEmpty from "@/components/CartIsEmpty";
+// import CartIsEmpty from "@/components/CartIsEmpty";
+import CartWithItems from "@/components/CartWithItems";
 
 export default function Cart(): React.JSX.Element {
   return (
@@ -12,7 +13,8 @@ export default function Cart(): React.JSX.Element {
         <Header />
       </div>
 
-      <CartIsEmpty />
+      <CartWithItems />
+      {/* <CartIsEmpty /> */}
 
       <footer />
     </div>

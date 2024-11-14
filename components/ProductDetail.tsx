@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 
 import { ProductDetailProps } from "@/types";
+import Link from "next/link";
 
 const ProductDetail: React.FC<ProductDetailProps> = ({
   specification,
@@ -43,8 +44,9 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
 
         <span>${price}</span>
 
-        <Button variant="outline" className="uppercase h-12">
-          Add to cart
+        <Button variant="outline" className="uppercase h-12" asChild>
+          {/* @TODO */}
+          <Link href="/cart">Add to cart</Link>
         </Button>
       </div>
     </div>
