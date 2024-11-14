@@ -7,11 +7,11 @@ export default function Patch(): React.JSX.Element {
     <ProductDetail
       price={9.99}
       specification={
-        <div className="flex items-center gap-8">
-          <h2 className="uppercase text-2xl">Patch</h2>
+        <div>
+          <h3 className="uppercase">Patch</h3>
           <ul className="text-[#808080] uppercase text-xs">
-            <li>PVC + velcro</li>
             <li>130X40MM</li>
+            <li>PVC + velcro</li>
           </ul>
         </div>
       }
