@@ -6,6 +6,9 @@ import CartIsEmpty from "@/components/CartIsEmpty";
 import CartWithItems from "@/components/CartWithItems";
 
 export default function Cart(): React.JSX.Element {
+  // @TODO
+  const items = [1];
+
   return (
     <div className="flex flex-col justify-between min-h-screen">
       <div>
@@ -13,7 +16,7 @@ export default function Cart(): React.JSX.Element {
         <Header />
       </div>
 
-      <CartWithItems />
+      {items.length ? <CartWithItems /> : <CartIsEmpty />}
 
       <footer />
     </div>

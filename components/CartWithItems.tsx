@@ -14,17 +14,12 @@ const CartWithItems: React.FC = (): React.JSX.Element => {
 
       <div className="flex items-center flex-col w-full max-w-4xl gap-8">
         <Card className="flex justify-between items-center gap-10 px-10 py-6 w-full">
-          <div className="flex items-center gap-8">
-            {/* @TODO */}
-            <div className={`w-2 h-2 rounded-full ${"bg-[#00ff00]"}`} />
-
-            <Link
-              href="/bracelet"
-              className="uppercase text-2xl hover:opacity-85"
-            >
-              Bracelet
-            </Link>
-          </div>
+          <Link
+            href="/bracelet"
+            className="uppercase text-2xl hover:opacity-85"
+          >
+            Bracelet
+          </Link>
 
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-8">

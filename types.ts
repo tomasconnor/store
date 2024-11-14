@@ -17,7 +17,6 @@ export type AccordionItemProps = {
 export type ProductDetailProps = {
   specification: React.JSX.Element;
   price: number;
-  inStock: boolean;
 };
 
 export type NavItem = {
@@ -25,7 +24,23 @@ export type NavItem = {
   slug: string;
 };
 
+// @TODO
 export type LanguageItem = {
   text: string;
   slug: string;
+};
+
+export type CheckoutToggleGroupItemProps = {
+  value: string;
+  label: string;
+  price: string;
+  description?: string;
+};
+
+export type CheckoutToggleGroupProps = {
+  children: React.ReactNode;
+};
+
+export type CheckoutFormProps = {
+  setOrderCompleted: React.Dispatch<React.SetStateAction<boolean>>;
 };
