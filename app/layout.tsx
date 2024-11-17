@@ -6,6 +6,7 @@ import { Libre_Franklin } from "next/font/google";
 const libreFranklin = Libre_Franklin({ subsets: ["latin"], weight: "600" });
 
 import Snowfall from "@/components/Snowfall";
+import Provider from "@/components/Provider";
 
 import "./globals.css";
 
@@ -22,7 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${libreFranklin.className} dark`}>
-        {children}
+        <Provider>{children}</Provider>
 
         <Snowfall
           color="white"

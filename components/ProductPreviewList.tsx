@@ -1,26 +1,21 @@
-import React from "react";
+"use client";
+
+import React, { useContext } from "react";
+import { DataContext } from "@/contexts/DataContext";
 
 import type { Product } from "@/types";
 
 import ProductPreviewItem from "@/components/ProductPreviewItem";
 
 const ProductPreviewList: React.FC = (): React.JSX.Element => {
-  const products: Product[] = [
-    { name: "Patch", slug: "patch" },
-    { name: "Bracelet", slug: "bracelet" },
-    {
-      name: "Bundle",
-      slug: "bundle",
-      badges: ["Save 10%", "Extra gift"],
-    },
-  ];
+  const { allProducts } = useContext(DataContext);
 
   return (
     <>
-      {products.map((product: Product, index: number) => (
+      {allProducts.map((product: Product, index: number) => (
         <ProductPreviewItem
-          key={product.name}
-          product={product}
+          key={index}
+          item={product}
           isEven={index % 2 !== 0}
         />
       ))}

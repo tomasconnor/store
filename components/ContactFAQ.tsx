@@ -1,6 +1,6 @@
 import React from "react";
 
-import { AccordionItemProps } from "@/types";
+import type { AccordionItemProps } from "@/types";
 
 import {
   Accordion,

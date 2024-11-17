@@ -2,7 +2,7 @@ import React from "react";
 
 import { ToggleGroup } from "@/components/ui/toggle-group";
 
-import { CheckoutToggleGroupProps } from "@/types";
+import type { CheckoutToggleGroupProps } from "@/types";
 
 const CheckoutToggleGroup: React.FC<CheckoutToggleGroupProps> = ({
   children,

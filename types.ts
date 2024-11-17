@@ -1,11 +1,17 @@
 export type Product = {
-  name: string;
-  slug: string;
+  id: string;
+  price: number;
+  size: string;
+  material: string;
   badges?: string[];
 };
 
+export type Bundle = Omit<Product, "size" | "material"> & {
+  items: Product[];
+};
+
 export type ProductPreviewItemProps = {
-  product: Product;
+  item: Product | Bundle;
   isEven: boolean;
 };
 
@@ -15,8 +21,9 @@ export type AccordionItemProps = {
 };
 
 export type ProductDetailProps = {
+  addToCart: (item: Product | Bundle, quantity: number) => void;
   specification: React.JSX.Element;
-  price: number;
+  item: Product | Bundle;
 };
 
 export type NavItem = {
@@ -41,6 +48,31 @@ export type CheckoutToggleGroupProps = {
   children: React.ReactNode;
 };
 
+export type CartItem = {
+  id: string;
+  price: number;
+  quantity: number;
+};
+
 export type CheckoutFormProps = {
+  cart: CartItem[];
   setOrderCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+};
+
+export type Provider = {
+  children: React.ReactNode;
+};
+
+export type CartWithItemsProps = {
+  cart: CartItem[];
+  adjustCartItemQuantity: (itemId: string, quantity: number) => void;
+  upgradeItemToBundle: (item: CartItem) => void;
+};
+
+export type DataContextProps = CartWithItemsProps & {
+  patch: Product;
+  bracelet: Product;
+  bundle: Bundle;
+  allProducts: (Product | Bundle)[];
+  addToCart: (item: Product | Bundle, quantity: number) => void;
 };

@@ -8,59 +8,99 @@ import { Badge } from "@/components/ui/badge";
 
 import Link from "next/link";
 
-const CartWithItems: React.FC = (): React.JSX.Element => {
+import type { CartItem, CartWithItemsProps } from "@/types";
+
+const CartWithItems: React.FC<CartWithItemsProps> = ({
+  cart,
+  adjustCartItemQuantity,
+  upgradeItemToBundle,
+}): React.JSX.Element => {
+  const subtotal = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
   return (
-    <div className="flex items-center flex-col px-6 gap-8">
+    <div className="flex items-center flex-col px-6 gap-8 pb-10">
       <h2 className="uppercase text-4xl text-center">Cart</h2>
 
       <div className="flex items-center flex-col w-full max-w-4xl gap-8">
-        <Card className="flex justify-between items-center gap-10 px-10 py-6 w-full">
-          <div className="flex flex-col">
-            <Link
-              href="/bracelet"
-              className="uppercase text-2xl hover:opacity-85"
-            >
-              Bracelet
-            </Link>
-
-            {/* @TODO */}
-            <span className="flex items-center gap-2">
-              <Button
-                variant="link"
-                className="p-0 uppercase underline hover:opacity-85"
-                asChild
+        {cart.map((item: CartItem) => (
+          <Card
+            key={item.id}
+            className="flex justify-between items-center gap-10 px-10 py-6 w-full"
+          >
+            <div className="flex flex-col">
+              <Link
+                href={`/${item.id}`}
+                className="uppercase text-2xl hover:opacity-85"
               >
-                <Link href="/bundle">Upgrade to bundle</Link>
-              </Button>
+                {item.id}
+              </Link>
 
-              <Badge className="dark:hover:bg-white uppercase">Save 10%</Badge>
+              <span className="flex items-center gap-2 mt-1">
+                {item.id !== "bundle" && (
+                  <Button
+                    onClick={() => upgradeItemToBundle(item)}
+                    variant="link"
+                    className="p-0 h-0 uppercase underline hover:opacity-85"
+                  >
+                    Upgrade to bundle
+                  </Button>
+                )}
 
-              <Badge className="dark:hover:bg-white uppercase">
-                Extra gift
-              </Badge>
-            </span>
-          </div>
+                <Badge className="dark:hover:bg-white uppercase">
+                  Save 10%
+                </Badge>
 
-          <div className="flex items-center gap-6">
-            <div className="flex items-center gap-8">
-              <Button variant="outline" className="h-12 w-12">
+                <Badge className="dark:hover:bg-white uppercase">
+                  Extra gift
+                </Badge>
+              </span>
+            </div>
+
+            <div className="flex items-center gap-6">
+              <Button
+                variant="outline"
+                className="h-12 w-12"
+                onClick={() =>
+                  adjustCartItemQuantity(
+                    item.id,
+                    Math.max(0, Math.min(item.quantity - 1))
+                  )
+                }
+              >
                 <Minus />
               </Button>
 
-              <span>1</span>
+              <span className="min-w-[20px] text-center">{item.quantity}</span>
 
-              <Button variant="outline" className="h-12 w-12">
+              <Button
+                variant="outline"
+                className="h-12 w-12"
+                onClick={() =>
+                  adjustCartItemQuantity(
+                    item.id,
+                    Math.max(0, Math.min(item.quantity + 1))
+                  )
+                }
+              >
                 <Plus />
               </Button>
-            </div>
 
-            <span>$9.99</span>
-          </div>
-        </Card>
+              <span className="ml-4 w-[65px] text-right">
+                ${(item.price * item.quantity).toFixed(2)}
+              </span>
+            </div>
+          </Card>
+        ))}
 
         <div className="flex justify-between w-full px-10">
-          <span className="uppercase">Just $5 for free shipping!</span>
-          <span className="uppercase">Total $9.99</span>
+          <span className="uppercase">
+            {subtotal > 20
+              ? "You’ve unlocked free shipping!"
+              : `Unlock free shipping with $${(20 - subtotal).toFixed(2)}!`}
+          </span>
+          <span className="uppercase">Subtotal ${subtotal.toFixed(2)}</span>
         </div>
       </div>
 

@@ -18,7 +18,7 @@ import { FadeText } from "@/components/ui/fade-text";
 
 import { Text, X } from "lucide-react";
 
-import { NavItem } from "@/types";
+import type { NavItem } from "@/types";
 
 const navItems: NavItem[] = [
   { text: "Privacy Policy", slug: "/privacy" },

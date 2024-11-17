@@ -7,23 +7,25 @@ import Link from "next/link";
 import { Badge } from "@/components/ui/badge";
 
 const ProductPreviewItem: React.FC<ProductPreviewItemProps> = ({
-  product,
+  item,
   isEven,
 }): React.JSX.Element => {
   return (
-    <Link href={`/${product.slug}`}>
+    <Link href={`/${item.id}`}>
       <div
         className={`flex items-center justify-center h-[500px] ${
           isEven && "bg-[#0E0E0E]"
         }`}
       >
         <h2 className="flex flex-col items-center uppercase text-4xl gap-2">
-          {product.name}
+          {item.id}
 
-          {product.badges && (
+          {item.badges && (
             <div className="flex gap-2">
-              {product.badges.map((badge) => (
-                <Badge className="dark:hover:bg-white">{badge}</Badge>
+              {item.badges.map((badge) => (
+                <Badge key={badge} className="dark:hover:bg-white">
+                  {badge}
+                </Badge>
               ))}
             </div>
           )}

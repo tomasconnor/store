@@ -19,10 +19,11 @@ import CheckoutToggleGroupItem from "@/components/CheckoutToggleGroupItem";
 
 import OrderSummary from "@/components/OrderSummary";
 
-import { CheckoutFormProps } from "@/types";
+import type { CheckoutFormProps } from "@/types";
 
 const CheckoutForm: React.FC<CheckoutFormProps> = ({
   setOrderCompleted,
+  cart,
 }): React.JSX.Element => {
   return (
     <div className="flex items-center flex-col px-6 gap-8 pb-10">
@@ -99,7 +100,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
 
         {/* Right */}
         <div className="w-full max-w-96">
-          <OrderSummary />
+          <OrderSummary cart={cart} />
 
           <Button
             variant="outline"

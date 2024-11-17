@@ -1,4 +1,7 @@
-import React from "react";
+"use client";
+
+import React, { useContext } from "react";
+import { DataContext } from "@/contexts/DataContext";
 
 import Link from "next/link";
 
@@ -11,6 +14,8 @@ import { Badge } from "@/components/ui/badge";
 import { ShoppingCart, Instagram } from "lucide-react";
 
 const Header: React.FC = (): React.JSX.Element => {
+  const { cart } = useContext(DataContext);
+
   return (
     <header className="flex items-center justify-between p-6">
       <h1>
@@ -27,7 +32,7 @@ const Header: React.FC = (): React.JSX.Element => {
         >
           <Link href="/cart">
             <Badge className="absolute -top-1 -right-1 w-6 h-6 flex items-center justify-center dark:hover:bg-white">
-              0
+              {cart.length}
             </Badge>
             <ShoppingCart />
           </Link>

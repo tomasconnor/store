@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { DataContext } from "@/contexts/DataContext";
 
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
@@ -12,8 +13,7 @@ import CartIsEmpty from "@/components/CartIsEmpty";
 import CheckoutForm from "@/components/CheckoutForm";
 
 export default function Checkout(): React.JSX.Element {
-  // @TODO
-  const items = [1];
+  const { cart } = useContext(DataContext);
 
   const [orderCompleted, setOrderCompleted] = useState<boolean>(false);
 
@@ -24,12 +24,12 @@ export default function Checkout(): React.JSX.Element {
         <Header />
       </div>
 
-      {!items.length ? (
+      {!cart.length ? (
         <CartIsEmpty />
       ) : orderCompleted ? (
         <OrderCompleted />
       ) : (
-        <CheckoutForm setOrderCompleted={setOrderCompleted} />
+        <CheckoutForm cart={cart} setOrderCompleted={setOrderCompleted} />
       )}
 
       <footer />

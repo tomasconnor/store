@@ -18,7 +18,7 @@ import { FadeText } from "@/components/ui/fade-text";
 
 import { X } from "lucide-react";
 
-import { LanguageItem } from "@/types";
+import type { LanguageItem } from "@/types";
 
 const languages: LanguageItem[] = [
   { text: "Čeština", slug: "/" },
