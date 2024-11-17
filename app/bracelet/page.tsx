@@ -6,10 +6,11 @@ import { DataContext } from "@/contexts/DataContext";
 import ProductDetail from "@/components/ProductDetail";
 
 export default function Bracelet(): React.JSX.Element {
-  const { bracelet, addToCart } = useContext(DataContext);
+  const { bracelet, addToCart, cart } = useContext(DataContext);
 
   return (
     <ProductDetail
+      cart={cart}
       addToCart={addToCart}
       item={bracelet}
       specification={

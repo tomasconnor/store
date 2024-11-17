@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
@@ -6,9 +6,10 @@ import Header from "@/components/Header";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 
-import type { ProductDetailProps } from "@/types";
+import type { CartItem, ProductDetailProps } from "@/types";
 
 const ProductDetail: React.FC<ProductDetailProps> = ({
+  cart,
   addToCart,
   specification,
   item,
@@ -16,6 +17,18 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
   const router = useRouter();
 
   const [quantity, setQuantity] = useState(1);
+
+  useEffect(() => {
+    const itemExistInCart = cart.find(
+      (cartItem: CartItem) => cartItem.id === item.id
+    );
+
+    if (itemExistInCart) {
+      setQuantity(itemExistInCart.quantity);
+    }
+
+    console.log("itemExistInCart", itemExistInCart);
+  }, []);
 
   return (
     <div className="flex flex-col justify-between min-h-screen">
@@ -59,7 +72,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
             router.push("/cart");
           }}
         >
-          Add to cart
+          BUY NOW
         </Button>
       </div>
     </div>

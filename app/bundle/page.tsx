@@ -11,10 +11,11 @@ import Link from "next/link";
 import type { Product } from "@/types";
 
 export default function Bundle(): React.JSX.Element {
-  const { bundle, addToCart } = useContext(DataContext);
+  const { bundle, addToCart, cart } = useContext(DataContext);
 
   return (
     <ProductDetail
+      cart={cart}
       addToCart={addToCart}
       item={bundle}
       specification={
@@ -23,7 +24,7 @@ export default function Bundle(): React.JSX.Element {
             <h2 className="uppercase text-2xl">{bundle.id}</h2>
 
             <div className="flex gap-2 mt-1">
-              {bundle.badges.map((badge: string) => (
+              {bundle.badges?.map((badge: string) => (
                 <Badge key={badge} className="dark:hover:bg-white uppercase">
                   {badge}
                 </Badge>

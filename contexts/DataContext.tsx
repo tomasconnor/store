@@ -50,9 +50,7 @@ const DataContextProvider = ({ children }: Provider) => {
 
       if (existingItem) {
         return prevState.map((cartItem: CartItem) =>
-          cartItem.id === id
-            ? { ...cartItem, quantity: cartItem.quantity + quantity }
-            : cartItem
+          cartItem.id === id ? { ...cartItem, quantity: quantity } : cartItem
         );
       } else {
         return [...prevState, { id, price, quantity }];

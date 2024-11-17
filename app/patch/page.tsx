@@ -6,10 +6,11 @@ import { DataContext } from "@/contexts/DataContext";
 import ProductDetail from "@/components/ProductDetail";
 
 export default function Patch(): React.JSX.Element {
-  const { patch, addToCart } = useContext(DataContext);
+  const { patch, addToCart, cart } = useContext(DataContext);
 
   return (
     <ProductDetail
+      cart={cart}
       addToCart={addToCart}
       item={patch}
       specification={

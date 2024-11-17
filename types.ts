@@ -21,6 +21,7 @@ export type AccordionItemProps = {
 };
 
 export type ProductDetailProps = {
+  cart: CartItem[];
   addToCart: (item: Product | Bundle, quantity: number) => void;
   specification: React.JSX.Element;
   item: Product | Bundle;
