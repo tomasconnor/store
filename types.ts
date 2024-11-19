@@ -64,8 +64,32 @@ export type Provider = {
   children: React.ReactNode;
 };
 
+export type ShippingMethod = {
+  name: string;
+  price: number;
+};
+
+export type PaymentMethod = {
+  name: string;
+  price: number;
+};
+
+export type DeliveryAddress = {
+  name: string;
+  street: string;
+  city: string;
+  postalCode: string;
+  country: string;
+};
+
+export type ContactDetails = {
+  email: string;
+  phone: string;
+};
+
 export type CartWithItemsProps = {
   cart: CartItem[];
+  subtotal: number;
   adjustCartItemQuantity: (itemId: string, quantity: number) => void;
   upgradeItemToBundle: (item: CartItem) => void;
 };
@@ -74,6 +98,17 @@ export type DataContextProps = CartWithItemsProps & {
   patch: Product;
   bracelet: Product;
   bundle: Bundle;
+  shippingMethods: ShippingMethod[];
+  paymentMethods: PaymentMethod[];
+  contactDetails: ContactDetails;
+  setContactDetails: React.Dispatch<React.SetStateAction<ContactDetails>>;
+  deliveryAddress: DeliveryAddress;
+  setDeliveryAddress: React.Dispatch<React.SetStateAction<DeliveryAddress>>;
+  shippingMethod: ShippingMethod;
+  setShippingMethod: React.Dispatch<React.SetStateAction<ShippingMethod>>;
+  paymentMethod: PaymentMethod;
+  setPaymentMethod: React.Dispatch<React.SetStateAction<PaymentMethod>>;
+  total: number;
   allProducts: (Product | Bundle)[];
   addToCart: (item: Product | Bundle, quantity: number) => void;
 };

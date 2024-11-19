@@ -8,6 +8,10 @@ import type {
   CartItem,
   Provider,
   DataContextProps,
+  ContactDetails,
+  DeliveryAddress,
+  ShippingMethod,
+  PaymentMethod,
 } from "@/types";
 
 const BRACELET = {
@@ -33,12 +37,45 @@ const BUNDLE = {
 
 const ALL_PRODUCTS = [BRACELET, PATCH, BUNDLE];
 
+const SHIPPING_METHODS = [
+  { name: "Zásilkovna", price: 69 },
+  { name: "PPL", price: 89 },
+];
+
+const PAYMENT_METHODS = [{ name: "Card", price: 0 }];
+
 export const DataContext = createContext<DataContextProps>(
   {} as DataContextProps
 );
 
 const DataContextProvider = ({ children }: Provider) => {
+  const [contactDetails, setContactDetails] = useState<ContactDetails>({
+    email: "",
+    phone: "",
+  });
+  const [deliveryAddress, setDeliveryAddress] = useState<DeliveryAddress>({
+    name: "",
+    street: "",
+    city: "",
+    postalCode: "",
+    country: "",
+  });
+  const [shippingMethod, setShippingMethod] = useState<ShippingMethod>({
+    name: "Zásilkovna",
+    price: 69,
+  });
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>({
+    name: "Card",
+    price: 0,
+  });
+
   const [cart, setCart] = useState<CartItem[]>([]);
+  const subtotal: number = cart.reduce(
+    (sum, item) => sum + item.price * item.quantity,
+    0
+  );
+
+  const total: number = subtotal + shippingMethod.price + paymentMethod.price;
 
   const addToCart = (item: Product | Bundle, quantity: number) => {
     const { id, price } = item;
@@ -98,7 +135,19 @@ const DataContextProvider = ({ children }: Provider) => {
         bracelet: BRACELET,
         bundle: BUNDLE,
         allProducts: ALL_PRODUCTS,
+        shippingMethods: SHIPPING_METHODS,
+        paymentMethods: PAYMENT_METHODS,
+        contactDetails,
+        setContactDetails,
+        deliveryAddress,
+        setDeliveryAddress,
+        shippingMethod,
+        setShippingMethod,
+        paymentMethod,
+        setPaymentMethod,
         cart,
+        subtotal,
+        total,
         addToCart,
         adjustCartItemQuantity,
         upgradeItemToBundle,

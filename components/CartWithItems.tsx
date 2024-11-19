@@ -12,13 +12,10 @@ import type { CartItem, CartWithItemsProps } from "@/types";
 
 const CartWithItems: React.FC<CartWithItemsProps> = ({
   cart,
+  subtotal,
   adjustCartItemQuantity,
   upgradeItemToBundle,
 }): React.JSX.Element => {
-  const subtotal = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
   return (
     <div className="flex items-center flex-col px-6 gap-8 pb-10">
       <h2 className="uppercase text-4xl text-center">Cart</h2>

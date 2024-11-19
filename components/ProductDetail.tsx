@@ -26,8 +26,6 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
     if (itemExistInCart) {
       setQuantity(itemExistInCart.quantity);
     }
-
-    console.log("itemExistInCart", itemExistInCart);
   }, []);
 
   return (

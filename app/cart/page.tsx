@@ -9,7 +9,7 @@ import CartIsEmpty from "@/components/CartIsEmpty";
 import CartWithItems from "@/components/CartWithItems";
 
 export default function Cart(): React.JSX.Element {
-  const { cart, adjustCartItemQuantity, upgradeItemToBundle } =
+  const { cart, subtotal, adjustCartItemQuantity, upgradeItemToBundle } =
     useContext(DataContext);
 
   return (
@@ -22,6 +22,7 @@ export default function Cart(): React.JSX.Element {
       {cart.length ? (
         <CartWithItems
           cart={cart}
+          subtotal={subtotal}
           adjustCartItemQuantity={adjustCartItemQuantity}
           upgradeItemToBundle={upgradeItemToBundle}
         />
