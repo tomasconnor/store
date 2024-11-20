@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 
-import { Minus, Plus } from "lucide-react";
+import { Minus, Plus, Trash } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 import Link from "next/link";
@@ -68,7 +68,7 @@ const CartWithItems: React.FC<CartWithItemsProps> = ({
                     )
                   }
                 >
-                  <Minus />
+                  {item.quantity <= 1 ? <Trash color="red" /> : <Minus />}
                 </Button>
 
                 <span className="min-w-[20px] text-center">
