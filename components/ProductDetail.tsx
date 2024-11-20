@@ -35,10 +35,10 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
         <Header />
       </div>
 
-      <div className="flex justify-center items-center gap-10 pb-10">
+      <div className="flex justify-center items-center gap-8 pb-10">
         {specification}
 
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
           <Button
             variant="outline"
             className="h-12 w-12"

@@ -3,45 +3,54 @@ import React from "react";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import { Separator } from "@/components/ui/separator";
-import type { CartItem } from "@/types";
+import type { OrderSummaryProps, CartItem } from "@/types";
 
-const OrderSummary: React.FC<{ cart: CartItem[] }> = ({
-  cart,
+const OrderSummary: React.FC<OrderSummaryProps> = ({
+  items,
+  total,
+  shippingMethod,
+  paymentMethod,
+  subtotal,
+  FREESHIPPING_TRESHOLD,
 }): React.JSX.Element => {
-  const subtotal = cart.reduce(
-    (sum, item) => sum + item.price * item.quantity,
-    0
-  );
-
   return (
     <>
-      {cart.map((item) => (
-        <div key={item.id} className="flex justify-between px-4">
-          <Link href="/bracelet" className="uppercase">
-            {item.id}
-          </Link>
-          <span>
-            {item.quantity} x {item.quantity * item.price}
-          </span>
-        </div>
-      ))}
+      {items.map((item: CartItem) => {
+        const itemTotal = item.quantity * item.price;
+
+        return (
+          <div key={item.id} className="flex justify-between px-4">
+            <Link href={`/${item.id}`} className="uppercase">
+              {item.id}
+            </Link>
+
+            <span>
+              {item.quantity} x {itemTotal.toFixed(2)}
+            </span>
+          </div>
+        );
+      })}
 
       <Card className="p-6 mt-4">
         <div className="flex justify-between">
-          <span>SUBTOTAL</span>
-          <span>${subtotal}</span>
+          <span className="uppercase">Subtotal</span>
+          <span>{subtotal}</span>
         </div>
 
         <div className="flex justify-between">
-          <span>SHIPPING</span>
-          <span>$1.99</span>
+          <span className="uppercase">Delivery</span>
+          <span>
+            {subtotal > FREESHIPPING_TRESHOLD
+              ? "FREE"
+              : shippingMethod.price + paymentMethod.price}
+          </span>
         </div>
 
         <Separator className="my-[18px]" />
 
         <div className="flex justify-between">
-          <span>TOTAL</span>
-          <span>$11.99</span>
+          <span className="uppercase">Total</span>
+          <span>{total}</span>
         </div>
       </Card>
     </>

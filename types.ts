@@ -38,17 +38,6 @@ export type LanguageItem = {
   slug: string;
 };
 
-export type CheckoutToggleGroupItemProps = {
-  value: string;
-  label: string;
-  price: string;
-  description?: string;
-};
-
-export type CheckoutToggleGroupProps = {
-  children: React.ReactNode;
-};
-
 export type CartItem = {
   id: string;
   price: number;
@@ -56,8 +45,7 @@ export type CartItem = {
 };
 
 export type CheckoutFormProps = {
-  cart: CartItem[];
-  setOrderCompleted: React.Dispatch<React.SetStateAction<boolean>>;
+  onCompleteOrder: () => void;
 };
 
 export type Provider = {
@@ -92,6 +80,17 @@ export type CartWithItemsProps = {
   subtotal: number;
   adjustCartItemQuantity: (itemId: string, quantity: number) => void;
   upgradeItemToBundle: (item: CartItem) => void;
+  FREESHIPPING_TRESHOLD: number;
+};
+
+export type CompletedOrderProps = {
+  items: CartItem[];
+  subtotal: number;
+  total: number;
+  deliveryAddress: DeliveryAddress;
+  contactDetails: ContactDetails;
+  paymentMethod: PaymentMethod;
+  shippingMethod: ShippingMethod;
 };
 
 export type DataContextProps = CartWithItemsProps & {
@@ -111,4 +110,15 @@ export type DataContextProps = CartWithItemsProps & {
   total: number;
   allProducts: (Product | Bundle)[];
   addToCart: (item: Product | Bundle, quantity: number) => void;
+  reset: () => void;
+  FREESHIPPING_TRESHOLD: number;
+};
+
+export type OrderSummaryProps = {
+  items: CartItem[];
+  total: number;
+  shippingMethod: ShippingMethod;
+  paymentMethod: PaymentMethod;
+  subtotal: number;
+  FREESHIPPING_TRESHOLD: number;
 };

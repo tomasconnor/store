@@ -2,7 +2,20 @@ import React from "react";
 
 import OrderSummary from "@/components/OrderSummary";
 
-const OrderCompleted: React.FC = (): React.JSX.Element => {
+import type { CompletedOrderProps } from "@/types";
+
+const OrderCompleted: React.FC<
+  CompletedOrderProps & { FREESHIPPING_TRESHOLD: number }
+> = ({
+  items,
+  subtotal,
+  total,
+  deliveryAddress,
+  contactDetails,
+  paymentMethod,
+  shippingMethod,
+  FREESHIPPING_TRESHOLD,
+}): React.JSX.Element => {
   return (
     <div className="flex items-center flex-col px-6 gap-8 pb-10">
       <h2 className="uppercase text-4xl text-center">
@@ -16,10 +29,10 @@ const OrderCompleted: React.FC = (): React.JSX.Element => {
           <div>
             <h3 className="uppercase mb-2">Contact details</h3>
 
-            <p className="text-[#808080] text-sm">
-              TOMASCONNOR.CZ@GMAIL.COM
+            <p className="text-[#808080] uppercase text-sm">
+              {contactDetails.email}
               <br />
-              +420 735 864 842
+              {contactDetails.phone}
             </p>
           </div>
 
@@ -27,14 +40,14 @@ const OrderCompleted: React.FC = (): React.JSX.Element => {
           <div>
             <h3 className="uppercase mb-2">Delivery address</h3>
 
-            <p className="text-[#808080] text-sm">
-              TOMÁŠ CONNOR
+            <p className="text-[#808080] text-sm uppercase">
+              {deliveryAddress.name}
               <br />
-              GEN. PÍKY 323/14A
+              {deliveryAddress.street}
               <br />
-              OLOMOUC, 779 00
+              {deliveryAddress.city}, {deliveryAddress.postalCode}
               <br />
-              ČESKÁ REPUBLIKA
+              {deliveryAddress.country}
             </p>
           </div>
 
@@ -42,8 +55,8 @@ const OrderCompleted: React.FC = (): React.JSX.Element => {
           <div>
             <h3 className="uppercase mb-2">Shipping method</h3>
 
-            <p className="text-[#808080] text-sm">
-              ZÁSILKOVNA (PRAŽSKÁ 323/14A, OLOMOUC)
+            <p className="text-[#808080] text-sm uppercase">
+              {shippingMethod.name}
             </p>
           </div>
 
@@ -51,15 +64,22 @@ const OrderCompleted: React.FC = (): React.JSX.Element => {
           <div>
             <h3 className="uppercase mb-2">Payment method</h3>
 
-            <p className="text-[#808080] text-sm">
-              PLATBA KARTOU (**** **** **** 3310)
+            <p className="text-[#808080] text-sm uppercase">
+              {paymentMethod.name}
             </p>
           </div>
         </div>
 
         {/* Right */}
         <div className="w-full max-w-96">
-          <OrderSummary />
+          <OrderSummary
+            items={items}
+            total={total}
+            FREESHIPPING_TRESHOLD={FREESHIPPING_TRESHOLD}
+            paymentMethod={paymentMethod}
+            shippingMethod={shippingMethod}
+            subtotal={subtotal}
+          />
         </div>
       </div>
     </div>

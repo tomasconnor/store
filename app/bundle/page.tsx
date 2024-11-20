@@ -19,7 +19,7 @@ export default function Bundle(): React.JSX.Element {
       addToCart={addToCart}
       item={bundle}
       specification={
-        <div className="flex gap-8">
+        <div className="flex gap-6">
           <div>
             <h2 className="uppercase text-2xl">{bundle.id}</h2>
 

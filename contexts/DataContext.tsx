@@ -38,44 +38,67 @@ const BUNDLE = {
 const ALL_PRODUCTS = [BRACELET, PATCH, BUNDLE];
 
 const SHIPPING_METHODS = [
-  { name: "Zásilkovna", price: 69 },
-  { name: "PPL", price: 89 },
+  {
+    name: "GLS",
+    price: 2.99,
+  },
+  { name: "PPL", price: 3.99 },
+  { name: "DHL", price: 4.99 },
 ];
 
-const PAYMENT_METHODS = [{ name: "Card", price: 0 }];
+const PAYMENT_METHODS = [
+  { name: "Card", price: 0 },
+  { name: "Dobírka", price: 30 },
+];
+
+const CONTACT_DETAILS = { email: "", phone: "" };
+const DELIVERY_ADDRESS = {
+  name: "",
+  street: "",
+  city: "",
+  postalCode: "",
+  country: "",
+};
+
+const FREESHIPPING_TRESHOLD = 20; // $
 
 export const DataContext = createContext<DataContextProps>(
   {} as DataContextProps
 );
 
 const DataContextProvider = ({ children }: Provider) => {
-  const [contactDetails, setContactDetails] = useState<ContactDetails>({
-    email: "",
-    phone: "",
-  });
-  const [deliveryAddress, setDeliveryAddress] = useState<DeliveryAddress>({
-    name: "",
-    street: "",
-    city: "",
-    postalCode: "",
-    country: "",
-  });
-  const [shippingMethod, setShippingMethod] = useState<ShippingMethod>({
-    name: "Zásilkovna",
-    price: 69,
-  });
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>({
-    name: "Card",
-    price: 0,
-  });
+  const [contactDetails, setContactDetails] =
+    useState<ContactDetails>(CONTACT_DETAILS);
+
+  const [deliveryAddress, setDeliveryAddress] =
+    useState<DeliveryAddress>(DELIVERY_ADDRESS);
+
+  const [shippingMethod, setShippingMethod] = useState<ShippingMethod>(
+    SHIPPING_METHODS[0]
+  );
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>(
+    PAYMENT_METHODS[0]
+  );
 
   const [cart, setCart] = useState<CartItem[]>([]);
+
   const subtotal: number = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
 
-  const total: number = subtotal + shippingMethod.price + paymentMethod.price;
+  const total: number =
+    subtotal +
+    (subtotal > FREESHIPPING_TRESHOLD ? 0 : shippingMethod.price) +
+    (subtotal > FREESHIPPING_TRESHOLD ? 0 : paymentMethod.price);
+
+  const reset = () => {
+    setContactDetails(CONTACT_DETAILS);
+    setDeliveryAddress(DELIVERY_ADDRESS);
+    setShippingMethod(SHIPPING_METHODS[0]);
+    setPaymentMethod(PAYMENT_METHODS[0]);
+    setCart([]);
+  };
 
   const addToCart = (item: Product | Bundle, quantity: number) => {
     const { id, price } = item;
@@ -146,11 +169,13 @@ const DataContextProvider = ({ children }: Provider) => {
         paymentMethod,
         setPaymentMethod,
         cart,
-        subtotal,
-        total,
+        subtotal: Number(subtotal.toFixed(2)),
+        total: Number(total.toFixed(2)),
         addToCart,
         adjustCartItemQuantity,
         upgradeItemToBundle,
+        reset,
+        FREESHIPPING_TRESHOLD,
       }}
     >
       {children}

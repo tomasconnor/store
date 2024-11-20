@@ -9,8 +9,13 @@ import CartIsEmpty from "@/components/CartIsEmpty";
 import CartWithItems from "@/components/CartWithItems";
 
 export default function Cart(): React.JSX.Element {
-  const { cart, subtotal, adjustCartItemQuantity, upgradeItemToBundle } =
-    useContext(DataContext);
+  const {
+    cart,
+    subtotal,
+    adjustCartItemQuantity,
+    upgradeItemToBundle,
+    FREESHIPPING_TRESHOLD,
+  } = useContext(DataContext);
 
   return (
     <div className="flex flex-col justify-between min-h-screen">
@@ -25,6 +30,7 @@ export default function Cart(): React.JSX.Element {
           subtotal={subtotal}
           adjustCartItemQuantity={adjustCartItemQuantity}
           upgradeItemToBundle={upgradeItemToBundle}
+          FREESHIPPING_TRESHOLD={FREESHIPPING_TRESHOLD}
         />
       ) : (
         <CartIsEmpty />

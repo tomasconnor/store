@@ -12,10 +12,37 @@ import CartIsEmpty from "@/components/CartIsEmpty";
 
 import CheckoutForm from "@/components/CheckoutForm";
 
-export default function Checkout(): React.JSX.Element {
-  const { cart } = useContext(DataContext);
+import type { CompletedOrderProps } from "@/types";
 
-  const [orderCompleted, setOrderCompleted] = useState<boolean>(false);
+export default function Checkout(): React.JSX.Element {
+  const {
+    cart,
+    subtotal,
+    total,
+    deliveryAddress,
+    paymentMethod,
+    shippingMethod,
+    contactDetails,
+    reset,
+    FREESHIPPING_TRESHOLD,
+  } = useContext(DataContext);
+
+  const [completedOrder, setCompletedOrder] =
+    useState<CompletedOrderProps | null>(null);
+
+  const handleCompleteOrder = () => {
+    setCompletedOrder({
+      items: cart,
+      subtotal,
+      total,
+      deliveryAddress,
+      contactDetails,
+      paymentMethod,
+      shippingMethod,
+    });
+
+    reset();
+  };
 
   return (
     <div className="flex flex-col justify-between min-h-screen">
@@ -24,12 +51,15 @@ export default function Checkout(): React.JSX.Element {
         <Header />
       </div>
 
-      {!cart.length ? (
-        <CartIsEmpty />
-      ) : orderCompleted ? (
-        <OrderCompleted />
+      {completedOrder ? (
+        <OrderCompleted
+          {...completedOrder}
+          FREESHIPPING_TRESHOLD={FREESHIPPING_TRESHOLD}
+        />
+      ) : cart.length ? (
+        <CheckoutForm onCompleteOrder={handleCompleteOrder} />
       ) : (
-        <CheckoutForm cart={cart} setOrderCompleted={setOrderCompleted} />
+        <CartIsEmpty />
       )}
 
       <footer />
