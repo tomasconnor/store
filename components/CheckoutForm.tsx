@@ -134,11 +134,11 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
                 </SelectTrigger>
 
                 <SelectContent>
-                  <SelectItem className="uppercase" value="cz">
+                  <SelectItem className="uppercase" value="Česká republika">
                     Česká republika
                   </SelectItem>
 
-                  <SelectItem className="uppercase" value="sk">
+                  <SelectItem className="uppercase" value="Slovensko">
                     Slovensko
                   </SelectItem>
                 </SelectContent>
