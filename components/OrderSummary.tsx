@@ -16,8 +16,6 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
   return (
     <>
       {items.map((item: CartItem) => {
-        const itemTotal = item.quantity * item.price;
-
         return (
           <div key={item.id} className="flex justify-between px-4">
             <Link href={`/${item.id}`} className="uppercase">
@@ -25,7 +23,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
             </Link>
 
             <span>
-              {item.quantity} x {itemTotal.toFixed(2)}
+              {item.quantity} x {item.price}
             </span>
           </div>
         );

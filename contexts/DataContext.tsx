@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 import type {
   Product,
@@ -57,7 +57,7 @@ const DELIVERY_ADDRESS = {
   street: "",
   city: "",
   postalCode: "",
-  country: "",
+  country: "Česká republika",
 };
 
 const FREESHIPPING_TRESHOLD = 20; // $
@@ -82,6 +82,14 @@ const DataContextProvider = ({ children }: Provider) => {
 
   const [cart, setCart] = useState<CartItem[]>([]);
 
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+  }, []);
+
   const subtotal: number = cart.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
@@ -98,57 +106,69 @@ const DataContextProvider = ({ children }: Provider) => {
     setShippingMethod(SHIPPING_METHODS[0]);
     setPaymentMethod(PAYMENT_METHODS[0]);
     setCart([]);
+    localStorage.removeItem("cart");
   };
 
   const addToCart = (item: Product | Bundle, quantity: number) => {
-    const { id, price } = item;
-
     setCart((prevState: CartItem[]) => {
+      const { id, price } = item;
+
       const existingItem = prevState.find(
         (cartItem: CartItem) => cartItem.id === id
       );
 
-      if (existingItem) {
-        return prevState.map((cartItem: CartItem) =>
-          cartItem.id === id ? { ...cartItem, quantity: quantity } : cartItem
-        );
-      } else {
-        return [...prevState, { id, price, quantity }];
-      }
+      const updatedCart = existingItem
+        ? prevState.map((cartItem: CartItem) =>
+            cartItem.id === id ? { ...cartItem, quantity: quantity } : cartItem
+          )
+        : [...prevState, { id, price, quantity }];
+
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+      return updatedCart;
     });
   };
 
   const adjustCartItemQuantity = (itemId: string, quantity: number) => {
-    setCart((cart) =>
-      quantity >= 1
-        ? cart.map((item: CartItem) =>
-            item.id === itemId ? { ...item, quantity } : item
-          )
-        : cart.filter((item: CartItem) => item.id !== itemId)
-    );
+    setCart((prevState: CartItem[]) => {
+      const updatedCart =
+        quantity >= 1
+          ? prevState.map((item: CartItem) =>
+              item.id === itemId ? { ...item, quantity } : item
+            )
+          : prevState.filter((item: CartItem) => item.id !== itemId);
+
+      localStorage.setItem("cart", JSON.stringify(updatedCart));
+
+      return updatedCart;
+    });
   };
 
   const upgradeItemToBundle = (item: CartItem) => {
-    const existingBundle = cart.find(
-      (cartItem: CartItem) => cartItem.id === "bundle"
-    );
+    setCart((prevState: CartItem[]) => {
+      const existingBundle = prevState.find(
+        (cartItem: CartItem) => cartItem.id === "bundle"
+      );
 
-    const upgradedCart = existingBundle
-      ? cart.map((cartItem: CartItem) =>
-          cartItem.id === "bundle"
-            ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
-            : cartItem
-        )
-      : [
-          ...cart,
-          { id: BUNDLE.id, price: BUNDLE.price, quantity: item.quantity },
-        ];
+      const upgradedCart = existingBundle
+        ? prevState.map((cartItem: CartItem) =>
+            cartItem.id === "bundle"
+              ? { ...cartItem, quantity: cartItem.quantity + item.quantity }
+              : cartItem
+          )
+        : [
+            ...prevState,
+            { id: BUNDLE.id, price: BUNDLE.price, quantity: item.quantity },
+          ];
 
-    const filteredCart = upgradedCart.filter(
-      (cartItem) => cartItem.id !== item.id
-    );
+      const filteredCart = upgradedCart.filter(
+        (cartItem) => cartItem.id !== item.id
+      );
 
-    setCart(filteredCart);
+      localStorage.setItem("cart", JSON.stringify(filteredCart));
+
+      return filteredCart;
+    });
   };
 
   return (

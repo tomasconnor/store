@@ -25,6 +25,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
 }): React.JSX.Element => {
   const {
     cart,
+    deliveryAddress,
     shippingMethod,
     setContactDetails,
     setDeliveryAddress,
@@ -128,9 +129,12 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
                 />
               </div>
 
-              <Select onValueChange={handleChangeCountry}>
+              <Select
+                onValueChange={handleChangeCountry}
+                value={deliveryAddress.country}
+              >
                 <SelectTrigger className="w-[200px] uppercase">
-                  <SelectValue placeholder="Country" />
+                  {deliveryAddress.country}
                 </SelectTrigger>
 
                 <SelectContent>
