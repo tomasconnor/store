@@ -16,6 +16,7 @@ import type { CompletedOrderProps } from "@/types";
 
 import { collection, addDoc } from "firebase/firestore";
 import { firestore } from "@/services/firebase";
+import { fireworks } from "@/lib/utils";
 
 export default function Checkout(): React.JSX.Element {
   const {
@@ -50,6 +51,8 @@ export default function Checkout(): React.JSX.Element {
     });
 
     setCompletedOrder(order);
+
+    fireworks();
 
     reset();
   };
