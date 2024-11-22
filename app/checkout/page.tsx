@@ -14,6 +14,9 @@ import CheckoutForm from "@/components/CheckoutForm";
 
 import type { CompletedOrderProps } from "@/types";
 
+import { collection, addDoc } from "firebase/firestore";
+import { firestore } from "@/services/firebase";
+
 export default function Checkout(): React.JSX.Element {
   const {
     cart,
@@ -30,8 +33,8 @@ export default function Checkout(): React.JSX.Element {
   const [completedOrder, setCompletedOrder] =
     useState<CompletedOrderProps | null>(null);
 
-  const handleCompleteOrder = () => {
-    setCompletedOrder({
+  const handleCompleteOrder = async () => {
+    const order = {
       items: cart,
       subtotal,
       total,
@@ -39,7 +42,14 @@ export default function Checkout(): React.JSX.Element {
       contactDetails,
       paymentMethod,
       shippingMethod,
+    };
+
+    await addDoc(collection(firestore, "orders"), {
+      ...order,
+      date: new Date(),
     });
+
+    setCompletedOrder(order);
 
     reset();
   };

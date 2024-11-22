@@ -99,8 +99,8 @@ const CartWithItems: React.FC<CartWithItemsProps> = ({
         <div className="flex justify-between w-full px-10">
           <span className="uppercase">
             {subtotal > FREESHIPPING_TRESHOLD
-              ? "You’ve unlocked free shipping!"
-              : `Unlock free shipping over $${FREESHIPPING_TRESHOLD}!`}
+              ? "You’ve unlocked free shipping"
+              : `Unlock free shipping over $${FREESHIPPING_TRESHOLD}`}
           </span>
           <span className="uppercase">Subtotal {subtotal}</span>
         </div>
