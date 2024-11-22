@@ -55,11 +55,13 @@ export type Provider = {
 export type ShippingMethod = {
   name: string;
   price: number;
+  badge?: string;
 };
 
 export type PaymentMethod = {
   name: string;
   price: number;
+  badge?: string;
 };
 
 export type DeliveryAddress = {

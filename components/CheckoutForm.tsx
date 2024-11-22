@@ -11,10 +11,11 @@ import {
   SelectContent,
   SelectItem,
   SelectTrigger,
-  SelectValue,
 } from "@/components/ui/select";
 
 import { Card } from "@/components/ui/card";
+
+import { Badge } from "@/components/ui/badge";
 
 import OrderSummary from "@/components/OrderSummary";
 
@@ -167,7 +168,15 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
                     onClick={() => handleChangeShippingMethod(item)}
                   >
                     <div className="flex justify-between w-full">
-                      <span className="uppercase">{item.name}</span>
+                      <div className="flex items-center gap-3">
+                        <span className="uppercase">{item.name}</span>
+
+                        {item.badge && (
+                          <Badge className="dark:hover:bg-white uppercase">
+                            {item.badge}
+                          </Badge>
+                        )}
+                      </div>
                       <span className="normal-case">
                         {subtotal > FREESHIPPING_TRESHOLD || item.price === 0
                           ? "FREE"
@@ -196,7 +205,15 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
                     onClick={() => handleChangePaymentMethod(item)}
                   >
                     <div className="flex justify-between w-full">
-                      <span className="uppercase">{item.name}</span>
+                      <div className="flex items-center gap-3">
+                        <span className="uppercase">{item.name}</span>
+
+                        {item.badge && (
+                          <Badge className="dark:hover:bg-white uppercase">
+                            {item.badge}
+                          </Badge>
+                        )}
+                      </div>
                       <span className="normal-case">
                         {subtotal > FREESHIPPING_TRESHOLD || item.price === 0
                           ? "FREE"

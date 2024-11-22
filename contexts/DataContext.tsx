@@ -41,13 +41,14 @@ const SHIPPING_METHODS = [
   {
     name: "GLS",
     price: 2.99,
+    badge: "Lowest price",
   },
   { name: "PPL", price: 3.99 },
   { name: "DHL", price: 4.99 },
 ];
 
 const PAYMENT_METHODS = [
-  { name: "Card", price: 0 },
+  { name: "Card", price: 0, badge: "Lowest price" },
   { name: "Dobírka", price: 30 },
 ];
 
