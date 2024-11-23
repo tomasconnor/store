@@ -41,14 +41,14 @@ const SHIPPING_METHODS = [
   {
     name: "GLS",
     price: 2.99,
-    badge: "Lowest price",
+    badge: "Most favorite",
   },
   { name: "PPL", price: 3.99 },
   { name: "DHL", price: 4.99 },
 ];
 
 const PAYMENT_METHODS = [
-  { name: "Card", price: 0, badge: "Lowest price" },
+  { name: "Card", price: 0, badge: "Most favorite" },
   { name: "Dobírka", price: 30 },
 ];
 
@@ -61,7 +61,7 @@ const DELIVERY_ADDRESS = {
   country: "Česká republika",
 };
 
-const FREESHIPPING_TRESHOLD = 20; // $
+const FREE_SHIPPING_THRESHOLD = 20; // $
 
 export const DataContext = createContext<DataContextProps>(
   {} as DataContextProps
@@ -82,6 +82,7 @@ const DataContextProvider = ({ children }: Provider) => {
   );
 
   const [cart, setCart] = useState<CartItem[]>([]);
+  const [cartLoading, setCartLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const storedCart = localStorage.getItem("cart");
@@ -89,6 +90,8 @@ const DataContextProvider = ({ children }: Provider) => {
     if (storedCart) {
       setCart(JSON.parse(storedCart));
     }
+
+    setCartLoading(false);
   }, []);
 
   const subtotal: number = cart.reduce(
@@ -98,8 +101,8 @@ const DataContextProvider = ({ children }: Provider) => {
 
   const total: number =
     subtotal +
-    (subtotal > FREESHIPPING_TRESHOLD ? 0 : shippingMethod.price) +
-    (subtotal > FREESHIPPING_TRESHOLD ? 0 : paymentMethod.price);
+    (subtotal > FREE_SHIPPING_THRESHOLD ? 0 : shippingMethod.price) +
+    (subtotal > FREE_SHIPPING_THRESHOLD ? 0 : paymentMethod.price);
 
   const reset = () => {
     setContactDetails(CONTACT_DETAILS);
@@ -196,7 +199,8 @@ const DataContextProvider = ({ children }: Provider) => {
         adjustCartItemQuantity,
         upgradeItemToBundle,
         reset,
-        FREESHIPPING_TRESHOLD,
+        freeShippingThreshold: FREE_SHIPPING_THRESHOLD,
+        cartLoading,
       }}
     >
       {children}

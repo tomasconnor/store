@@ -14,7 +14,7 @@ export default function Cart(): React.JSX.Element {
     subtotal,
     adjustCartItemQuantity,
     upgradeItemToBundle,
-    FREESHIPPING_TRESHOLD,
+    freeShippingThreshold,
   } = useContext(DataContext);
 
   return (
@@ -30,7 +30,7 @@ export default function Cart(): React.JSX.Element {
           subtotal={subtotal}
           adjustCartItemQuantity={adjustCartItemQuantity}
           upgradeItemToBundle={upgradeItemToBundle}
-          FREESHIPPING_TRESHOLD={FREESHIPPING_TRESHOLD}
+          freeShippingThreshold={freeShippingThreshold}
         />
       ) : (
         <CartIsEmpty />

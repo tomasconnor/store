@@ -82,7 +82,7 @@ export type CartWithItemsProps = {
   subtotal: number;
   adjustCartItemQuantity: (itemId: string, quantity: number) => void;
   upgradeItemToBundle: (item: CartItem) => void;
-  FREESHIPPING_TRESHOLD: number;
+  freeShippingThreshold: number;
 };
 
 export type CompletedOrderProps = {
@@ -113,7 +113,8 @@ export type DataContextProps = CartWithItemsProps & {
   allProducts: (Product | Bundle)[];
   addToCart: (item: Product | Bundle, quantity: number) => void;
   reset: () => void;
-  FREESHIPPING_TRESHOLD: number;
+  freeShippingThreshold: number;
+  cartLoading: boolean;
 };
 
 export type OrderSummaryProps = {
@@ -122,5 +123,5 @@ export type OrderSummaryProps = {
   shippingMethod: ShippingMethod;
   paymentMethod: PaymentMethod;
   subtotal: number;
-  FREESHIPPING_TRESHOLD: number;
+  freeShippingThreshold: number;
 };

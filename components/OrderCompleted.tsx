@@ -5,7 +5,7 @@ import OrderSummary from "@/components/OrderSummary";
 import type { CompletedOrderProps } from "@/types";
 
 const OrderCompleted: React.FC<
-  CompletedOrderProps & { FREESHIPPING_TRESHOLD: number }
+  CompletedOrderProps & { freeShippingThreshold: number }
 > = ({
   items,
   subtotal,
@@ -14,7 +14,7 @@ const OrderCompleted: React.FC<
   contactDetails,
   paymentMethod,
   shippingMethod,
-  FREESHIPPING_TRESHOLD,
+  freeShippingThreshold,
 }): React.JSX.Element => {
   return (
     <div className="flex items-center flex-col px-6 gap-8 pb-10">
@@ -75,7 +75,7 @@ const OrderCompleted: React.FC<
           <OrderSummary
             items={items}
             total={total}
-            FREESHIPPING_TRESHOLD={FREESHIPPING_TRESHOLD}
+            freeShippingThreshold={freeShippingThreshold}
             paymentMethod={paymentMethod}
             shippingMethod={shippingMethod}
             subtotal={subtotal}

@@ -26,7 +26,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
     if (itemExistInCart) {
       setQuantity(itemExistInCart.quantity);
     }
-  }, []);
+  }, [cart]);
 
   return (
     <div className="flex flex-col justify-between min-h-screen">

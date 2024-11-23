@@ -28,7 +28,7 @@ export default function Checkout(): React.JSX.Element {
     shippingMethod,
     contactDetails,
     reset,
-    FREESHIPPING_TRESHOLD,
+    freeShippingThreshold,
   } = useContext(DataContext);
 
   const [completedOrder, setCompletedOrder] =
@@ -67,7 +67,7 @@ export default function Checkout(): React.JSX.Element {
       {completedOrder ? (
         <OrderCompleted
           {...completedOrder}
-          FREESHIPPING_TRESHOLD={FREESHIPPING_TRESHOLD}
+          freeShippingThreshold={freeShippingThreshold}
         />
       ) : cart.length ? (
         <CheckoutForm onCompleteOrder={handleCompleteOrder} />

@@ -37,7 +37,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
     paymentMethod,
     setPaymentMethod,
     paymentMethods,
-    FREESHIPPING_TRESHOLD,
+    freeShippingThreshold,
   } = useContext(DataContext);
 
   const handleChangeContactDetails = (
@@ -178,7 +178,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
                         )}
                       </div>
                       <span className="normal-case">
-                        {subtotal > FREESHIPPING_TRESHOLD || item.price === 0
+                        {subtotal > freeShippingThreshold || item.price === 0
                           ? "FREE"
                           : item.price}
                       </span>
@@ -215,7 +215,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
                         )}
                       </div>
                       <span className="normal-case">
-                        {subtotal > FREESHIPPING_TRESHOLD || item.price === 0
+                        {subtotal > freeShippingThreshold || item.price === 0
                           ? "FREE"
                           : item.price}
                       </span>
@@ -233,7 +233,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
             total={total}
             shippingMethod={shippingMethod}
             paymentMethod={paymentMethod}
-            FREESHIPPING_TRESHOLD={FREESHIPPING_TRESHOLD}
+            freeShippingThreshold={freeShippingThreshold}
             subtotal={subtotal}
             items={cart}
           />

@@ -11,13 +11,13 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
   shippingMethod,
   paymentMethod,
   subtotal,
-  FREESHIPPING_TRESHOLD,
+  freeShippingThreshold,
 }): React.JSX.Element => {
   return (
     <>
       {items.map((item: CartItem) => {
         return (
-          <div key={item.id} className="flex justify-between px-4">
+          <div key={item.id} className="flex justify-between px-6">
             <Link href={`/${item.id}`} className="uppercase">
               {item.id}
             </Link>
@@ -38,7 +38,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
         <div className="flex justify-between">
           <span className="uppercase">Delivery</span>
           <span>
-            {subtotal > FREESHIPPING_TRESHOLD
+            {subtotal > freeShippingThreshold
               ? "FREE"
               : shippingMethod.price + paymentMethod.price}
           </span>

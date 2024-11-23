@@ -15,7 +15,7 @@ const CartWithItems: React.FC<CartWithItemsProps> = ({
   subtotal,
   adjustCartItemQuantity,
   upgradeItemToBundle,
-  FREESHIPPING_TRESHOLD,
+  freeShippingThreshold,
 }): React.JSX.Element => {
   return (
     <div className="flex items-center flex-col px-6 gap-8 pb-10">
@@ -98,9 +98,9 @@ const CartWithItems: React.FC<CartWithItemsProps> = ({
 
         <div className="flex justify-between w-full px-10">
           <span className="uppercase">
-            {subtotal > FREESHIPPING_TRESHOLD
+            {subtotal > freeShippingThreshold
               ? "You’ve unlocked free shipping"
-              : `Unlock free shipping over $${FREESHIPPING_TRESHOLD}`}
+              : `Unlock free shipping over $${freeShippingThreshold}`}
           </span>
           <span className="uppercase">Subtotal {subtotal}</span>
         </div>
