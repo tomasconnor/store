@@ -2,8 +2,6 @@
 
 import React, { useState } from "react";
 
-import Link from "next/link";
-
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -20,21 +18,24 @@ import { X } from "lucide-react";
 
 import type { LanguageItem } from "@/types";
 
+import { useLocale } from "next-intl";
+import { setUserLocale } from "@/services/locale";
+
 const languages: LanguageItem[] = [
-  { text: "Čeština", slug: "/" },
-  { text: "Slovenčina", slug: "/" },
-  { text: "English", slug: "/" },
+  { label: "Čeština", locale: "cs" },
+  { label: "Slovenčina", locale: "sk" },
 ];
 
 const LanguageSwitcher: React.FC = (): React.JSX.Element => {
+  const locale = useLocale();
+  const currentLanguage = languages.find(
+    (language: LanguageItem) => language.locale === locale
+  );
+
   const [open, setOpen] = useState<boolean>(false);
 
-  const defaultLanguage: string = "English"; // @TODO
-  const [currentLanguage, setCurrentLanguage] =
-    useState<string>(defaultLanguage);
-
-  const handleCurrentLanguage = (language: string) => {
-    setCurrentLanguage(language);
+  const handleLocale = (locale: string) => {
+    setUserLocale(locale);
     setOpen(false);
   };
 
@@ -42,7 +43,7 @@ const LanguageSwitcher: React.FC = (): React.JSX.Element => {
     <AlertDialog open={open} onOpenChange={setOpen}>
       <AlertDialogTrigger asChild>
         <Button variant="ghost" className="h-12 uppercase">
-          {currentLanguage}
+          {currentLanguage?.label}
         </Button>
       </AlertDialogTrigger>
 
@@ -60,20 +61,19 @@ const LanguageSwitcher: React.FC = (): React.JSX.Element => {
             const transitionDelay: number = 0.15 + nextSmoothTransitionValue;
 
             return (
-              <Link
-                key={item.text}
-                href={item.slug}
-                onClick={() => handleCurrentLanguage(item.text)}
-                className="hover:opacity-85 text-center text-2xl uppercase"
+              <span
+                key={item.label}
+                onClick={() => handleLocale(item.locale)}
+                className="hover:opacity-85 text-center text-2xl uppercase cursor-pointer"
               >
                 <FadeText
                   direction="up"
                   framerProps={{
                     show: { transition: { delay: transitionDelay } },
                   }}
-                  text={item.text}
+                  text={item.label}
                 />
-              </Link>
+              </span>
             );
           })}
         </nav>

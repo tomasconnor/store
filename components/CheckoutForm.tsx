@@ -19,7 +19,7 @@ import { Badge } from "@/components/ui/badge";
 
 import OrderSummary from "@/components/OrderSummary";
 
-import type { CheckoutFormProps } from "@/types";
+import type { CheckoutFormProps, PaymentMethod, ShippingMethod } from "@/types";
 
 const CheckoutForm: React.FC<CheckoutFormProps> = ({
   onCompleteOrder,
@@ -63,11 +63,11 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
     }));
   };
 
-  const handleChangeShippingMethod = (item: any) => {
+  const handleChangeShippingMethod = (item: ShippingMethod) => {
     setShippingMethod(item);
   };
 
-  const handleChangePaymentMethod = (item: any) => {
+  const handleChangePaymentMethod = (item: PaymentMethod) => {
     setPaymentMethod(item);
   };
 

@@ -1,3 +1,6 @@
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale, getMessages } from "next-intl/server";
+
 import React from "react";
 
 import type { Metadata } from "next";
@@ -15,23 +18,28 @@ export const metadata: Metadata = {
   description: "",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={`${libreFranklin.className} dark`}>
-        <Provider>{children}</Provider>
+  const locale = await getLocale();
+  const messages = await getMessages();
 
-        <Snowfall
-          color="white"
-          snowflakeCount={50}
-          speed={[0, 0.5]}
-          radius={[0, 0.5]}
-          wind={[0, 1]}
-        />
+  return (
+    <html lang={locale}>
+      <body className={`${libreFranklin.className} dark`}>
+        <NextIntlClientProvider messages={messages}>
+          <Provider>{children}</Provider>
+
+          <Snowfall
+            color="white"
+            snowflakeCount={50}
+            speed={[0, 0.5]}
+            radius={[0, 0.5]}
+            wind={[0, 1]}
+          />
+        </NextIntlClientProvider>
       </body>
     </html>
   );

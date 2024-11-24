@@ -32,10 +32,9 @@ export type NavItem = {
   slug: string;
 };
 
-// @TODO
 export type LanguageItem = {
-  text: string;
-  slug: string;
+  label: string;
+  locale: string;
 };
 
 export type CartItem = {
