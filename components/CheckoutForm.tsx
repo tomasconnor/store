@@ -186,7 +186,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
                         item.price === 0 ? (
                           <span className="uppercase">{t("free")}</span>
                         ) : (
-                          item.price
+                          <span>{item.price} €</span>
                         )}
                       </span>
                     </div>
@@ -226,7 +226,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
                         item.price === 0 ? (
                           <span className="uppercase">{t("free")}</span>
                         ) : (
-                          item.price
+                          <span>{item.price} €</span>
                         )}
                       </span>
                     </div>

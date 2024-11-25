@@ -26,7 +26,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
             </Link>
 
             <span>
-              {item.quantity} x {item.price}
+              {item.quantity} x {item.price} €
             </span>
           </div>
         );
@@ -35,7 +35,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
       <Card className="p-6 mt-4">
         <div className="flex justify-between">
           <span className="uppercase">{t("subtotal")}</span>
-          <span>{subtotal}</span>
+          <span>{subtotal} €</span>
         </div>
 
         <div className="flex justify-between">
@@ -44,7 +44,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
             {subtotal > freeShippingThreshold ? (
               <span className="uppercase">{t("free")}</span>
             ) : (
-              shippingMethod.price + paymentMethod.price
+              <span>{shippingMethod.price + paymentMethod.price} €</span>
             )}
           </span>
         </div>
@@ -53,7 +53,7 @@ const OrderSummary: React.FC<OrderSummaryProps> = ({
 
         <div className="flex justify-between">
           <span className="uppercase">{t("total")}</span>
-          <span>{total}</span>
+          <span>{total} €</span>
         </div>
       </Card>
     </>
