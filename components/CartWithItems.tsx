@@ -103,8 +103,8 @@ const CartWithItems: React.FC<CartWithItemsProps> = ({
         <div className="flex justify-between w-full px-10">
           <span className="uppercase">
             {subtotal > freeShippingThreshold
-              ? t("youveUnlockedFreeShipping")
-              : t("unlockFreeShipping")}
+              ? t("freeShipping")
+              : t("freeShippingOver")}
           </span>
           <span className="uppercase">
             {t("subtotal")} {subtotal}
