@@ -58,7 +58,7 @@ const OrderCompleted: React.FC<
             <h3 className="uppercase mb-2">{t("shippingMethod")}</h3>
 
             <p className="text-[#808080] text-sm uppercase">
-              {shippingMethod.name}
+              {shippingMethod.id}
             </p>
           </div>
 
@@ -67,7 +67,7 @@ const OrderCompleted: React.FC<
             <h3 className="uppercase mb-2">{t("paymentMethod")}</h3>
 
             <p className="text-[#808080] text-sm uppercase">
-              {paymentMethod.name}
+              {t(paymentMethod.id)}
             </p>
           </div>
         </div>

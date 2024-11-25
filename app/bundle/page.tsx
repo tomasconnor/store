@@ -25,11 +25,13 @@ export default function Bundle(): React.JSX.Element {
             <h2 className="uppercase text-2xl">{t(bundle.id)}</h2>
 
             <div className="flex gap-2 mt-1">
-              {bundle.badges?.map((badge: string) => (
-                <Badge key={badge} className="dark:hover:bg-white uppercase">
-                  {badge}
-                </Badge>
-              ))}
+              <Badge className="dark:hover:bg-white uppercase">
+                {t("save10")}
+              </Badge>
+
+              <Badge className="dark:hover:bg-white uppercase">
+                {t("extraGift")}
+              </Badge>
             </div>
           </div>
 
@@ -38,7 +40,7 @@ export default function Bundle(): React.JSX.Element {
               <span className="mr-4">1x</span>
 
               <div>
-                <Link href="/bracelet">
+                <Link href={`/${item.id}`}>
                   <h3 className="uppercase">{t(item.id)}</h3>
                 </Link>
 

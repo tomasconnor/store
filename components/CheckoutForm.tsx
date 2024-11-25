@@ -160,24 +160,22 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
             <h3 className="uppercase mb-4">{t("shippingMethod")}</h3>
 
             <div className="flex flex-col gap-6">
-              {shippingMethods.map((item) => {
+              {shippingMethods.map((item, index) => {
                 return (
                   <Card
-                    key={item.name}
+                    key={item.id}
                     className={`flex flex-col justify-center w-full min-h-[80px] p-6 cursor-pointer ${
-                      shippingMethod.name === item.name
-                        ? "dark:border-white"
-                        : ""
+                      shippingMethod.id === item.id ? "dark:border-white" : ""
                     }`}
                     onClick={() => handleChangeShippingMethod(item)}
                   >
                     <div className="flex justify-between w-full">
                       <div className="flex items-center gap-3">
-                        <span className="uppercase">{item.name}</span>
+                        <span className="uppercase">{item.id}</span>
 
-                        {item.badge && (
+                        {index === 0 && (
                           <Badge className="dark:hover:bg-white uppercase">
-                            {item.badge}
+                            {t("mostFavorite")}
                           </Badge>
                         )}
                       </div>
@@ -200,24 +198,22 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
             <h3 className="uppercase mb-4">{t("paymentMethod")}</h3>
 
             <div className="flex flex-col gap-6">
-              {paymentMethods.map((item) => {
+              {paymentMethods.map((item, index) => {
                 return (
                   <Card
-                    key={item.name}
+                    key={item.id}
                     className={`flex flex-col justify-center w-full min-h-[80px] p-6 cursor-pointer ${
-                      paymentMethod.name === item.name
-                        ? "dark:border-white"
-                        : ""
+                      paymentMethod.id === item.id ? "dark:border-white" : ""
                     }`}
                     onClick={() => handleChangePaymentMethod(item)}
                   >
                     <div className="flex justify-between w-full">
                       <div className="flex items-center gap-3">
-                        <span className="uppercase">{item.name}</span>
+                        <span className="uppercase">{t(item.id)}</span>
 
-                        {item.badge && (
+                        {index === 0 && (
                           <Badge className="dark:hover:bg-white uppercase">
-                            {item.badge}
+                            {t("mostFavorite")}
                           </Badge>
                         )}
                       </div>

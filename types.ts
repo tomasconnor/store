@@ -3,7 +3,6 @@ export type Product = {
   price: number;
   size: string;
   material: string;
-  badges?: string[];
 };
 
 export type Bundle = Omit<Product, "size" | "material"> & {
@@ -52,15 +51,13 @@ export type Provider = {
 };
 
 export type ShippingMethod = {
-  name: string;
+  id: string;
   price: number;
-  badge?: string;
 };
 
 export type PaymentMethod = {
-  name: string;
+  id: string;
   price: number;
-  badge?: string;
 };
 
 export type DeliveryAddress = {

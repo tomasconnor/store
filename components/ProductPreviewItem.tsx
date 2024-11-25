@@ -23,13 +23,15 @@ const ProductPreviewItem: React.FC<ProductPreviewItemProps> = ({
         <h2 className="flex flex-col items-center uppercase text-4xl gap-2">
           {t(item.id)}
 
-          {item.badges && (
+          {item.id === "bundle" && (
             <div className="flex gap-2">
-              {item.badges.map((badge) => (
-                <Badge key={badge} className="dark:hover:bg-white">
-                  {badge}
-                </Badge>
-              ))}
+              <Badge className="dark:hover:bg-white uppercase">
+                {t("save10")}
+              </Badge>
+
+              <Badge className="dark:hover:bg-white uppercase">
+                {t("extraGift")}
+              </Badge>
             </div>
           )}
         </h2>

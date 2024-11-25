@@ -40,24 +40,22 @@ const DataContextProvider = ({ children }: Provider) => {
     id: "bundle",
     price: 12.99,
     items: [PATCH, BRACELET],
-    badges: [t("save10"), t("extraGift")],
   };
 
   const ALL_PRODUCTS = [BRACELET, PATCH, BUNDLE];
 
   const SHIPPING_METHODS = [
     {
-      name: "GLS",
+      id: "gls",
       price: 2.99,
-      badge: t("mostFavorite"),
     },
-    { name: "PPL", price: 3.29 },
-    { name: "DHL", price: 3.99 },
+    { id: "ppl", price: 3.29 },
+    { id: "dhl", price: 3.99 },
   ];
 
   const PAYMENT_METHODS = [
-    { name: t("cardPayment"), price: 0, badge: t("mostFavorite") },
-    { name: t("cashOnDelivery"), price: 0.99 },
+    { id: "cardPayment", price: 0 },
+    { id: "cashOnDelivery", price: 0.99 },
   ];
 
   const CONTACT_DETAILS = { email: "", phone: "" };
@@ -185,8 +183,8 @@ const DataContextProvider = ({ children }: Provider) => {
         bracelet: BRACELET,
         bundle: BUNDLE,
         allProducts: ALL_PRODUCTS,
-        shippingMethods: SHIPPING_METHODS,
-        paymentMethods: PAYMENT_METHODS,
+        shippingMethods: SHIPPING_METHODS.sort((a, b) => a.price - b.price),
+        paymentMethods: PAYMENT_METHODS.sort((a, b) => a.price - b.price),
         contactDetails,
         setContactDetails,
         deliveryAddress,
