@@ -2,15 +2,20 @@ import React from "react";
 
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
+import { useTranslations } from "next-intl";
 
 export default function Terms(): React.JSX.Element {
+  const t = useTranslations();
+
   return (
     <>
       <TopBar />
       <Header />
 
       <main className="px-6 pb-10 max-w-5xl m-auto">
-        <h2 className="uppercase text-4xl text-center">Terms and Conditions</h2>
+        <h2 className="uppercase text-4xl text-center">
+          {t("termsAndConditions")}
+        </h2>
 
         <p className="mt-4 uppercase text-sm text-[#808080]">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras lacinia

@@ -10,6 +10,8 @@ import Link from "next/link";
 
 import type { CartItem, CartWithItemsProps } from "@/types";
 
+import { useTranslations } from "next-intl";
+
 const CartWithItems: React.FC<CartWithItemsProps> = ({
   cart,
   subtotal,
@@ -17,9 +19,11 @@ const CartWithItems: React.FC<CartWithItemsProps> = ({
   upgradeItemToBundle,
   freeShippingThreshold,
 }): React.JSX.Element => {
+  const t = useTranslations();
+
   return (
     <div className="flex items-center flex-col px-6 gap-8 pb-10">
-      <h2 className="uppercase text-4xl text-center">Cart</h2>
+      <h2 className="uppercase text-4xl text-center">{t("cart")}</h2>
 
       <div className="flex items-center flex-col w-full max-w-4xl gap-8">
         {cart.map((item: CartItem) => {
@@ -33,7 +37,7 @@ const CartWithItems: React.FC<CartWithItemsProps> = ({
                   href={`/${item.id}`}
                   className="uppercase text-2xl hover:opacity-85"
                 >
-                  {item.id}
+                  {t(item.id)}
                 </Link>
 
                 <span className="flex items-center gap-2 mt-1">
@@ -43,16 +47,16 @@ const CartWithItems: React.FC<CartWithItemsProps> = ({
                       variant="link"
                       className="p-0 h-0 uppercase underline hover:opacity-85"
                     >
-                      Upgrade to bundle
+                      {t("upgradeToBundle")}
                     </Button>
                   )}
 
                   <Badge className="dark:hover:bg-white uppercase">
-                    Save 10%
+                    {t("save10")}
                   </Badge>
 
                   <Badge className="dark:hover:bg-white uppercase">
-                    Extra gift
+                    {t("extraGift")}
                   </Badge>
                 </span>
               </div>
@@ -99,20 +103,22 @@ const CartWithItems: React.FC<CartWithItemsProps> = ({
         <div className="flex justify-between w-full px-10">
           <span className="uppercase">
             {subtotal > freeShippingThreshold
-              ? "You’ve unlocked free shipping"
-              : `Unlock free shipping over $${freeShippingThreshold}`}
+              ? t("youveUnlockedFreeShipping")
+              : t("unlockFreeShipping")}
           </span>
-          <span className="uppercase">Subtotal {subtotal}</span>
+          <span className="uppercase">
+            {t("subtotal")} {subtotal}
+          </span>
         </div>
       </div>
 
       <div className="flex gap-4">
         <Button variant="ghost" className="uppercase" asChild>
-          <Link href="/">Continue shopping</Link>
+          <Link href="/">{t("continueShopping")}</Link>
         </Button>
 
         <Button variant="outline" className="uppercase" asChild>
-          <Link href="/checkout">Proceed to checkout</Link>
+          <Link href="/checkout">{t("proceedToCheckout")}</Link>
         </Button>
       </div>
     </div>

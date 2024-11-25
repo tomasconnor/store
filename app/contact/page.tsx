@@ -7,14 +7,18 @@ import { Card } from "@/components/ui/card";
 
 import ContactFAQ from "@/components/ContactFAQ";
 
+import { useTranslations } from "next-intl";
+
 export default function Contact(): React.JSX.Element {
+  const t = useTranslations();
+
   return (
     <>
       <TopBar />
       <Header />
 
       <main className="px-6 pb-10 max-w-5xl m-auto">
-        <h2 className="uppercase text-4xl text-center">Contact us</h2>
+        <h2 className="uppercase text-4xl text-center">{t("contactUs")}</h2>
 
         <div className="flex flex-wrap gap-8 mt-8">
           <Card className="text-center p-6 flex-1">

@@ -17,16 +17,19 @@ import { Button } from "@/components/ui/button";
 import { FadeText } from "@/components/ui/fade-text";
 
 import { Text, X } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 import type { NavItem } from "@/types";
 
-const navItems: NavItem[] = [
-  { text: "Privacy Policy", slug: "/privacy" },
-  { text: "Terms and Conditions", slug: "/terms" },
-  { text: "Contact Us", slug: "/contact" },
-];
-
 const Menu: React.FC = (): React.JSX.Element => {
+  const t = useTranslations();
+
+  const navItems: NavItem[] = [
+    { text: t("privacyPolicy"), slug: "/privacy" },
+    { text: t("termsAndConditions"), slug: "/terms" },
+    { text: t("contactUs"), slug: "/contact" },
+  ];
+
   const [open, setOpen] = useState<boolean>(false);
 
   return (

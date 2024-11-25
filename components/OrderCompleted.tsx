@@ -1,7 +1,7 @@
 import React from "react";
 
 import OrderSummary from "@/components/OrderSummary";
-
+import { useTranslations } from "next-intl";
 import type { CompletedOrderProps } from "@/types";
 
 const OrderCompleted: React.FC<
@@ -16,10 +16,12 @@ const OrderCompleted: React.FC<
   shippingMethod,
   freeShippingThreshold,
 }): React.JSX.Element => {
+  const t = useTranslations();
+
   return (
     <div className="flex items-center flex-col px-6 gap-8 pb-10">
       <h2 className="uppercase text-4xl text-center">
-        Thank you for your order
+        {t("thankYouForYourOrder")}
       </h2>
 
       <div className="flex gap-8 w-full max-w-4xl">
@@ -27,7 +29,7 @@ const OrderCompleted: React.FC<
         <div className="flex flex-col gap-6 max-[409px] w-full">
           {/* Contact details */}
           <div>
-            <h3 className="uppercase mb-2">Contact details</h3>
+            <h3 className="uppercase mb-2">{t("contactDetails")}</h3>
 
             <p className="text-[#808080] uppercase text-sm">
               {contactDetails.email}
@@ -38,7 +40,7 @@ const OrderCompleted: React.FC<
 
           {/* Delivery address */}
           <div>
-            <h3 className="uppercase mb-2">Delivery address</h3>
+            <h3 className="uppercase mb-2">{t("deliveryAddress")}</h3>
 
             <p className="text-[#808080] text-sm uppercase">
               {deliveryAddress.name}
@@ -53,7 +55,7 @@ const OrderCompleted: React.FC<
 
           {/* Shipping method */}
           <div>
-            <h3 className="uppercase mb-2">Shipping method</h3>
+            <h3 className="uppercase mb-2">{t("shippingMethod")}</h3>
 
             <p className="text-[#808080] text-sm uppercase">
               {shippingMethod.name}
@@ -62,7 +64,7 @@ const OrderCompleted: React.FC<
 
           {/* Payment method */}
           <div>
-            <h3 className="uppercase mb-2">Payment method</h3>
+            <h3 className="uppercase mb-2">{t("paymentMethod")}</h3>
 
             <p className="text-[#808080] text-sm uppercase">
               {paymentMethod.name}

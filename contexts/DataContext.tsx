@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useState, useEffect } from "react";
+import { useTranslations } from "next-intl";
 
 import type {
   Product,
@@ -14,60 +15,62 @@ import type {
   PaymentMethod,
 } from "@/types";
 
-const BRACELET = {
-  id: "bracelet",
-  price: 4.99,
-  size: "200x12mm",
-  material: "100% silicon",
-};
-
-const PATCH = {
-  id: "patch",
-  price: 9.99,
-  size: "130x40mm",
-  material: "PVC + Velcro",
-};
-
-const BUNDLE = {
-  id: "bundle",
-  price: 12.99,
-  items: [PATCH, BRACELET],
-  badges: ["Save 10%", "Extra gift"],
-};
-
-const ALL_PRODUCTS = [BRACELET, PATCH, BUNDLE];
-
-const SHIPPING_METHODS = [
-  {
-    name: "GLS",
-    price: 2.99,
-    badge: "Most favorite",
-  },
-  { name: "PPL", price: 3.99 },
-  { name: "DHL", price: 4.99 },
-];
-
-const PAYMENT_METHODS = [
-  { name: "Card", price: 0, badge: "Most favorite" },
-  { name: "Dobírka", price: 30 },
-];
-
-const CONTACT_DETAILS = { email: "", phone: "" };
-const DELIVERY_ADDRESS = {
-  name: "",
-  street: "",
-  city: "",
-  postalCode: "",
-  country: "Česká republika",
-};
-
-const FREE_SHIPPING_THRESHOLD = 20; // $
-
 export const DataContext = createContext<DataContextProps>(
   {} as DataContextProps
 );
 
 const DataContextProvider = ({ children }: Provider) => {
+  const t = useTranslations();
+
+  const BRACELET = {
+    id: "bracelet",
+    price: 4.99,
+    size: "200x12mm",
+    material: t("braceletMaterial"),
+  };
+
+  const PATCH = {
+    id: "patch",
+    price: 9.99,
+    size: "130x40mm",
+    material: t("patchMaterial"),
+  };
+
+  const BUNDLE = {
+    id: "bundle",
+    price: 12.99,
+    items: [PATCH, BRACELET],
+    badges: [t("save10"), t("extraGift")],
+  };
+
+  const ALL_PRODUCTS = [BRACELET, PATCH, BUNDLE];
+
+  const SHIPPING_METHODS = [
+    {
+      name: "GLS",
+      price: 2.99,
+      badge: t("mostFavorite"),
+    },
+    { name: "PPL", price: 3.99 },
+    { name: "DHL", price: 4.99 },
+  ];
+
+  const PAYMENT_METHODS = [
+    { name: t("cardPayment"), price: 0, badge: t("mostFavorite") },
+    { name: t("cashOnDelivery"), price: 30 },
+  ];
+
+  const CONTACT_DETAILS = { email: "", phone: "" };
+  const DELIVERY_ADDRESS = {
+    name: "",
+    street: "",
+    city: "",
+    postalCode: "",
+    country: "Česká republika",
+  };
+
+  const FREE_SHIPPING_THRESHOLD = 20; // $
+
   const [contactDetails, setContactDetails] =
     useState<ContactDetails>(CONTACT_DETAILS);
 

@@ -3,6 +3,7 @@ import React from "react";
 import type { ProductPreviewItemProps } from "@/types";
 
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 
 import { Badge } from "@/components/ui/badge";
 
@@ -10,6 +11,8 @@ const ProductPreviewItem: React.FC<ProductPreviewItemProps> = ({
   item,
   isEven,
 }): React.JSX.Element => {
+  const t = useTranslations();
+
   return (
     <Link href={`/${item.id}`}>
       <div
@@ -18,7 +21,7 @@ const ProductPreviewItem: React.FC<ProductPreviewItemProps> = ({
         }`}
       >
         <h2 className="flex flex-col items-center uppercase text-4xl gap-2">
-          {item.id}
+          {t(item.id)}
 
           {item.badges && (
             <div className="flex gap-2">

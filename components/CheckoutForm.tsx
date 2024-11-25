@@ -17,6 +17,8 @@ import { Card } from "@/components/ui/card";
 
 import { Badge } from "@/components/ui/badge";
 
+import { useTranslations } from "next-intl";
+
 import OrderSummary from "@/components/OrderSummary";
 
 import type { CheckoutFormProps, PaymentMethod, ShippingMethod } from "@/types";
@@ -24,6 +26,8 @@ import type { CheckoutFormProps, PaymentMethod, ShippingMethod } from "@/types";
 const CheckoutForm: React.FC<CheckoutFormProps> = ({
   onCompleteOrder,
 }): React.JSX.Element => {
+  const t = useTranslations();
+
   const {
     cart,
     deliveryAddress,
@@ -73,23 +77,23 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
 
   return (
     <div className="flex items-center flex-col px-6 gap-8 pb-10">
-      <h2 className="uppercase text-4xl text-center">Checkout</h2>
+      <h2 className="uppercase text-4xl text-center">{t("checkout")}</h2>
       <div className="flex gap-10 w-full max-w-5xl">
         {/* Left */}
         <div className="flex flex-col gap-8 max-[409px] w-full">
           {/* Contact details */}
           <div>
-            <h3 className="uppercase mb-4">Contact details</h3>
+            <h3 className="uppercase mb-4">{t("contactDetails")}</h3>
 
             <div className="flex gap-6">
               <Input
-                placeholder="Email"
+                placeholder={t("email")}
                 className="uppercase"
                 name="email"
                 onChange={handleChangeContactDetails}
               />
               <Input
-                placeholder="Phone"
+                placeholder={t("phone")}
                 className="uppercase"
                 name="phone"
                 onChange={handleChangeContactDetails}
@@ -99,17 +103,17 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
 
           {/* Delivery address */}
           <div>
-            <h3 className="uppercase mb-4">Delivery address</h3>
+            <h3 className="uppercase mb-4">{t("deliveryAddress")}</h3>
 
             <div className="flex flex-col gap-6">
               <Input
-                placeholder="Name"
+                placeholder={t("name")}
                 className="uppercase"
                 onChange={handleChangeDeliveryAddress}
                 name="name"
               />
               <Input
-                placeholder="Street"
+                placeholder={t("street")}
                 className="uppercase"
                 onChange={handleChangeDeliveryAddress}
                 name="street"
@@ -117,13 +121,13 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
 
               <div className="flex gap-6">
                 <Input
-                  placeholder="City"
+                  placeholder={t("city")}
                   className="uppercase"
                   onChange={handleChangeDeliveryAddress}
                   name="city"
                 />
                 <Input
-                  placeholder="Postal code"
+                  placeholder={t("postalCode")}
                   className="uppercase"
                   onChange={handleChangeDeliveryAddress}
                   name="postalCode"
@@ -153,7 +157,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
 
           {/* Shipping method */}
           <div>
-            <h3 className="uppercase mb-4">Shipping method</h3>
+            <h3 className="uppercase mb-4">{t("shippingMethod")}</h3>
 
             <div className="flex flex-col gap-6">
               {shippingMethods.map((item) => {
@@ -178,9 +182,12 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
                         )}
                       </div>
                       <span className="normal-case">
-                        {subtotal > freeShippingThreshold || item.price === 0
-                          ? "FREE"
-                          : item.price}
+                        {subtotal > freeShippingThreshold ||
+                        item.price === 0 ? (
+                          <span className="uppercase">{t("free")}</span>
+                        ) : (
+                          item.price
+                        )}
                       </span>
                     </div>
                   </Card>
@@ -190,7 +197,7 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
           </div>
 
           <div>
-            <h3 className="uppercase mb-4">Payment method</h3>
+            <h3 className="uppercase mb-4">{t("paymentMethod")}</h3>
 
             <div className="flex flex-col gap-6">
               {paymentMethods.map((item) => {
@@ -215,9 +222,12 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
                         )}
                       </div>
                       <span className="normal-case">
-                        {subtotal > freeShippingThreshold || item.price === 0
-                          ? "FREE"
-                          : item.price}
+                        {subtotal > freeShippingThreshold ||
+                        item.price === 0 ? (
+                          <span className="uppercase">{t("free")}</span>
+                        ) : (
+                          item.price
+                        )}
                       </span>
                     </div>
                   </Card>
@@ -238,19 +248,22 @@ const CheckoutForm: React.FC<CheckoutFormProps> = ({
             items={cart}
           />
 
-          <Button variant="outline" className="mt-6" onClick={onCompleteOrder}>
-            COMPLETE ORDER
+          <Button
+            variant="outline"
+            className="mt-6 uppercase"
+            onClick={onCompleteOrder}
+          >
+            {t("completeOrder")}
           </Button>
 
-          <p className="mt-4 text-[#808080] text-xs px-2">
-            BY COMPLETING YOUR ORDER, YOU CONFIRM THAT YOU HAVE READ AND AGREE
-            TO OUR{" "}
+          <p className="mt-4 text-[#808080] text-xs px-2 uppercase">
+            {t("orderConfirmationPart1")}{" "}
             <Link href="/terms" className="underline hover:no-underline">
-              TERMS AND CONDITIONS
+              {t("orderConfirmationPart2")}
             </Link>{" "}
-            AND{" "}
+            {t("orderConfirmationPart3")}{" "}
             <Link href="/privacy" className="underline hover:no-underline">
-              PRIVACY POLICY
+              {t("orderConfirmationPart4")}
             </Link>
             .
           </p>

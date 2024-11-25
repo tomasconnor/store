@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
-
+import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Minus, Plus } from "lucide-react";
 
@@ -14,6 +14,8 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
   specification,
   item,
 }): React.JSX.Element => {
+  const t = useTranslations();
+
   const router = useRouter();
 
   const [quantity, setQuantity] = useState(1);
@@ -70,7 +72,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
             router.push("/cart");
           }}
         >
-          BUY NOW
+          {t("buy")}
         </Button>
       </div>
     </div>

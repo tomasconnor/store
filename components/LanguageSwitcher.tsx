@@ -24,6 +24,7 @@ import { setUserLocale } from "@/services/locale";
 const languages: LanguageItem[] = [
   { label: "Čeština", locale: "cs" },
   { label: "Slovenčina", locale: "sk" },
+  { label: "English", locale: "en" },
 ];
 
 const LanguageSwitcher: React.FC = (): React.JSX.Element => {
