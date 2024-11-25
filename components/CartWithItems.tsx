@@ -93,7 +93,7 @@ const CartWithItems: React.FC<CartWithItemsProps> = ({
                 </Button>
 
                 <span className="ml-4 w-[65px] text-right">
-                  ${(item.price * item.quantity).toFixed(2)}
+                  {(item.price * item.quantity).toFixed(2)} €
                 </span>
               </div>
             </Card>
@@ -107,7 +107,7 @@ const CartWithItems: React.FC<CartWithItemsProps> = ({
               : t("freeShippingOver")}
           </span>
           <span className="uppercase">
-            {t("subtotal")} {subtotal}
+            {t("subtotal")} {subtotal} €
           </span>
         </div>
       </div>

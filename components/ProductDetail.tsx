@@ -60,7 +60,7 @@ const ProductDetail: React.FC<ProductDetailProps> = ({
           </Button>
         </div>
 
-        <span>${item.price}</span>
+        <span>{item.price} €</span>
 
         <Button
           variant="outline"

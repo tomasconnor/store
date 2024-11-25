@@ -51,13 +51,13 @@ const DataContextProvider = ({ children }: Provider) => {
       price: 2.99,
       badge: t("mostFavorite"),
     },
-    { name: "PPL", price: 3.99 },
-    { name: "DHL", price: 4.99 },
+    { name: "PPL", price: 3.29 },
+    { name: "DHL", price: 3.99 },
   ];
 
   const PAYMENT_METHODS = [
     { name: t("cardPayment"), price: 0, badge: t("mostFavorite") },
-    { name: t("cashOnDelivery"), price: 30 },
+    { name: t("cashOnDelivery"), price: 0.99 },
   ];
 
   const CONTACT_DETAILS = { email: "", phone: "" };
@@ -69,7 +69,7 @@ const DataContextProvider = ({ children }: Provider) => {
     country: "Česká republika",
   };
 
-  const FREE_SHIPPING_THRESHOLD = 20; // $
+  const FREE_SHIPPING_THRESHOLD = 20; // €
 
   const [contactDetails, setContactDetails] =
     useState<ContactDetails>(CONTACT_DETAILS);
